@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Questionnaire">
+
+    <TextView
+        android:id="@+id/Evaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/health_evaluation"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/exerciseQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_vertical"
+        android:text="@string/exercise"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_run_24"
+        app:drawableRightCompat="@drawable/ic_run_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Evaluation" />
+
+    <Spinner
+        android:id="@+id/exerciseSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseQ" />
+
+
+    <TextView
+        android:id="@+id/smokeQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:text="@string/smoke"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_smoke_24"
+        app:drawableRightCompat="@drawable/ic_smoke_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkSpinner" />
+
+    <RadioGroup
+        android:id="@+id/smokeRG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/smokeQ">
+
+        <RadioButton
+            android:id="@+id/smoke_Yes"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/smoke_No"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/no" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/drinkQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:text="@string/drink_heavily"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_wine_24"
+        app:drawableRightCompat="@drawable/ic_wine_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseSpinner" />
+
+    <Spinner
+        android:id="@+id/drinkSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinkQ" />
+
+    <TextView
+        android:id="@+id/bloodPressureQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:text="@string/highBloodPressure"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_up_24"
+        app:drawableRightCompat="@drawable/ic_up_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smokeQ" />
+
+    <RadioGroup
+        android:id="@+id/bloodPressureRG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/bloodPressureQ">
+
+        <RadioButton
+            android:id="@+id/bp_Yes"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/bp_No"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/no" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/bloodSugarQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:text="@string/highBloodSugar"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_up_24"
+        app:drawableRightCompat="@drawable/ic_up_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloodPressureQ" />
+
+    <RadioGroup
+        android:id="@+id/bloodSugarRG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/bloodSugarQ">
+
+        <RadioButton
+            android:id="@+id/bs_Yes"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/bs_No"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/no" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/bloodCholesterolQ"
+        android:layout_width="194dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center_vertical"
+        android:text="@string/highCholesterol"
+        android:textSize="14sp"
+        app:drawableEndCompat="@drawable/ic_up_24"
+        app:drawableRightCompat="@drawable/ic_run_24"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloodSugarQ" />
+
+    <RadioGroup
+        android:id="@+id/bloodCholesterolRG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/bloodCholesterolQ">
+
+        <RadioButton
+            android:id="@+id/bc_Yes"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/bc_No"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:text="@string/no" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="finishQuestion"
+        android:text="@string/finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bloodCholesterolQ" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="250dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="exercise_frequency">
+    <item>little or no exercise</item>
+    <item>light exercise or sports 1-3 days/week</item>
+    <item>moderate exercise 3-5 days/week)</item>
+    <item>hard exercise 6-7 days/week</item>
+    <item>very hard exercise and a physical job</item>
+    </string-array>
+
+    <string-array name="drink_frequency">
+        <item>little or no drink</item>
+        <item>light drinking 1-3 days/week</item>
+        <item>moderate drinking 3-5 days/week)</item>
+        <item>heavy drinking 6-7 days/week</item>
+    </string-array>
+
+</resources>

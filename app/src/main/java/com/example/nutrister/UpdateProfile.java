@@ -1,0 +1,241 @@
+package com.example.nutrister;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
+public class UpdateProfile extends AppCompatActivity {
+    EditText mWeight, mHeight;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    Spinner mExercise, mDrink;
+    RadioGroup mSmoke, mPressure, mSugar, mCholesterol;
+    RadioButton bSmoke, bPressure, bSugar, bCholesterol;
+    String userID, age, gender;
+    Button updateProfileBtn;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_update_profile);
+        mWeight = findViewById(R.id.weightType);
+        mHeight = findViewById(R.id.heightType);
+
+        //Exercise dropdown list
+        mExercise = findViewById(R.id.exerciseSpinner);
+        String[] exerciseFrequency = getResources().getStringArray(R.array.exercise_frequency);
+        ArrayAdapter adapterExercise = new ArrayAdapter(this, android.R.layout.simple_spinner_item, exerciseFrequency);
+        adapterExercise.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mExercise.setAdapter(adapterExercise);
+
+        //Drinking dropdown list
+        mDrink = findViewById(R.id.drinkSpinner);
+        String[] drinkFrequency = getResources().getStringArray(R.array.drink_frequency);
+        ArrayAdapter adapterDrink = new ArrayAdapter(this, android.R.layout.simple_spinner_item, drinkFrequency);
+        adapterDrink.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mDrink.setAdapter(adapterDrink);
+
+        //RadioGroup
+        mSmoke = findViewById(R.id.smokeRG);
+        mPressure = findViewById(R.id.bloodPressureRG);
+        mSugar = findViewById(R.id.bloodSugarRG);
+        mCholesterol = findViewById(R.id.bloodCholesterolRG);
+
+        updateProfileBtn = findViewById(R.id.finishBtn);
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+
+        //Retrieve user age and gender
+        DocumentReference documentReference = fStore.collection("users").document(userID);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                age = documentSnapshot.getString("age");
+                gender = documentSnapshot.getString("gender");
+            }
+        });
+
+        //setOnclick
+        updateProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!validateHeight() | !validateWeight() | !validateExercise() | !validateDrink() | !validateSmoke() | !validateSugar() | !validatePressure() | !validateCholesterol()) {
+                    return;
+                }
+                String weightValue = mWeight.getText().toString().trim();
+                String heightValue = mHeight.getText().toString().trim();
+
+                //calculate user BMI
+                BMICalculator bmiCalculator = new BMICalculator();
+                bmiCalculator.calculateBMI(weightValue, heightValue);
+                String bmiValue = bmiCalculator.BMIvalue;
+                String bmiStatus = bmiCalculator.result;
+
+                bSmoke = findViewById(mSmoke.getCheckedRadioButtonId());
+                bPressure = findViewById(mPressure.getCheckedRadioButtonId());
+                bSugar = findViewById(mSugar.getCheckedRadioButtonId());
+                bCholesterol = findViewById(mCholesterol.getCheckedRadioButtonId());
+
+                String exercise = mExercise.getSelectedItem().toString().trim();
+                String drink = mDrink.getSelectedItem().toString().trim();
+                String smoke = bSmoke.getText().toString().trim();
+                String pressure = bPressure.getText().toString().trim();
+                String sugar = bSugar.getText().toString().trim();
+                String cholesterol = bCholesterol.getText().toString().trim();
+
+                //calculate user BMR
+                BMRCalculator bmrCalculator = new BMRCalculator();
+                bmrCalculator.calculateBMR(weightValue, heightValue, age, gender, exercise);
+                String bmrValue = bmrCalculator.BMRvalue;
+
+                //calculate user health index
+                HealthIndex healthIndex = new HealthIndex();
+                healthIndex.calculateHealthIndex(exercise,drink,smoke,pressure,sugar,cholesterol);
+                String healthIndexValue = healthIndex.result;
+                String healthIndex1 = healthIndex.index1;
+                String healthIndex2 = healthIndex.index2;
+
+                UserInformation userinformation = new UserInformation();
+                userinformation.collectProfileUpdate(weightValue,heightValue,exercise,drink,smoke,pressure,sugar,cholesterol);
+
+                Map<String, Object> user = new HashMap<>();
+                user.put("weightValue", weightValue);
+                user.put("heightValue", heightValue);
+                user.put("bmiValue",bmiValue);
+                user.put("bmiStatus",bmiStatus);
+                user.put("exercise", exercise);
+                user.put("smoke", smoke);
+                user.put("drink", drink);
+                user.put("pressure", pressure);
+                user.put("sugar", sugar);
+                user.put("cholesterol", cholesterol);
+                user.put("bmrValue", bmrValue);
+                user.put("healthIndexValue", healthIndexValue);
+                user.put("healthIndex1", healthIndex1);
+                user.put("healthIndex2", healthIndex2);
+                documentReference.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("", "User profile is update for" + userID);
+                        Toast.makeText(UpdateProfile.this, "Completed", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("", "onFailure: " + e.toString());
+                    }
+                });
+                Intent intent = new Intent( getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    private boolean validateWeight() {
+        String weight = mWeight.getText().toString().trim();
+        if (TextUtils.isEmpty(weight)) {
+            mWeight.setError("Please enter your weight");
+            return false;
+        } else if (Integer.parseInt(weight) < 3 || Integer.parseInt(weight) > 150) {
+            mWeight.setError("Please enter valid weight");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateHeight() {
+        String height = mHeight.getText().toString().trim();
+        if (TextUtils.isEmpty(height)) {
+            mHeight.setError("Please enter your height");
+            return false;
+        } else if (Integer.parseInt(height) < 50 || Integer.parseInt(height) > 220) {
+            mHeight.setError("Please enter valid height");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateExercise() {
+        if (mExercise.getSelectedItem() == "") {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateSmoke() {
+        if (mSmoke.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateDrink() {
+        if (mDrink.getSelectedItem() == "") {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validatePressure() {
+        if (mPressure.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateSugar() {
+        if (mSugar.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateCholesterol() {
+        if (mCholesterol.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "Please answer this question", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+}
