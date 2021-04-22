@@ -16,8 +16,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutrister.R;
 import com.example.nutrister.models.FoodModel;
+import com.example.nutrister.models.FoodResponses;
+import com.example.nutrister.models.Parsed;
 import com.example.nutrister.request.Servicey;
-import com.example.nutrister.response.FoodResponse;
 import com.example.nutrister.utils.Credentials;
 import com.example.nutrister.utils.FoodApi;
 
@@ -57,21 +58,20 @@ public class SearchFragment extends Fragment {
     private void GetRetrofitResponse() {
         FoodApi foodapi = Servicey.getFoodApi();
 
-        Call<FoodResponse> responseCall = foodapi
+        Call<FoodResponses> responseCall = foodapi
                 .searchFood(
                         "apple",
                         Credentials.APP_ID,
                         Credentials.API_KEY);
-
-        responseCall.enqueue(new Callback<FoodResponse>() {
+        responseCall.enqueue(new Callback<FoodResponses>() {
             @Override
-            public void onResponse(Call<FoodResponse> call, Response<FoodResponse> response) {
+            public void onResponse(Call<FoodResponses> call, Response<FoodResponses> response) {
                 if (response.code() == 200) {
                     Log.v("Tag", "the response"+ response.body().toString());
 
-                    List<FoodModel> food = new ArrayList<>(response.body().getFood());
-                    for (FoodModel foods: food){
-                        Log.v("Tag", "the nutrient" + foods.getNutrients());
+                    List<Parsed> food = new ArrayList<>(response.body().getParsed());
+                    for (Parsed foods: food){
+                        Log.v("Tag", "the nutrient" + foods.getFood());
                     }
                 } else {
                     try {
@@ -80,16 +80,13 @@ public class SearchFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
-
             }
 
             @Override
-            public void onFailure(Call<FoodResponse> call, Throwable t) {
+            public void onFailure(Call<FoodResponses> call, Throwable t) {
 
             }
         });
-
 
     }
 

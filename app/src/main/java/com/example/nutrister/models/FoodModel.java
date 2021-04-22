@@ -28,7 +28,7 @@ public class FoodModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(label);
-        dest.writeString(foodId);
+        dest.writeString(foodId); 
         dest.writeString(category);
         dest.writeStringArray(nutrients);
     }
