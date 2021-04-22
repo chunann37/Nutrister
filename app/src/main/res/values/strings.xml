@@ -39,5 +39,6 @@
     <string name="calories_day">Calories/day</string>
     <string name="update_your_profile">Update your profile</string>
     <string name="suggestion_for_you">Suggestion for you</string>
+    <string name="app_label">Nutrister</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ public class SuggestFragment extends Fragment {
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
     private String userID;
-
+    private Button mRefresh;
 
     private SuggestViewModel suggestViewModel;
 
@@ -52,6 +53,8 @@ public class SuggestFragment extends Fragment {
         advice3 = root.findViewById(R.id.sugestAdvice3);
         advice4 = root.findViewById(R.id.sugestAdvice4);
         advice5 = root.findViewById(R.id.sugestAdvice5);
+
+        mRefresh = root.findViewById(R.id.refreshButton);
 
         //Retrieve Data
         DocumentReference documentReference = fStore.collection("user_advice").document(userID);
