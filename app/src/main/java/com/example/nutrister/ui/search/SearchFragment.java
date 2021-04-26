@@ -6,18 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutrister.R;
-import com.example.nutrister.models.FoodModel;
 import com.example.nutrister.models.FoodResponses;
-import com.example.nutrister.models.Nutrients;
 import com.example.nutrister.models.Parsed;
 import com.example.nutrister.request.Servicey;
 import com.example.nutrister.utils.Credentials;
@@ -71,8 +66,8 @@ public class SearchFragment extends Fragment {
                     Log.v("Tag", "the response"+ response.body().toString());
 
                     List<Parsed> food = new ArrayList<>(response.body().getParsed());
+
                     for (Parsed foods: food){
-                        Log.v("Tag", "the nutrient" + foods.getFood());
                         Log.v("Tag", "the nutrient" + foods.getFood());
                     }
 
