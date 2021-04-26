@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.nutrister.R;
 import com.example.nutrister.models.FoodModel;
 import com.example.nutrister.models.FoodResponses;
+import com.example.nutrister.models.Nutrients;
 import com.example.nutrister.models.Parsed;
 import com.example.nutrister.request.Servicey;
 import com.example.nutrister.utils.Credentials;
@@ -72,7 +73,9 @@ public class SearchFragment extends Fragment {
                     List<Parsed> food = new ArrayList<>(response.body().getParsed());
                     for (Parsed foods: food){
                         Log.v("Tag", "the nutrient" + foods.getFood());
+                        Log.v("Tag", "the nutrient" + foods.getFood());
                     }
+
                 } else {
                     try {
                         Log.v("Tag", "Error"+ response.errorBody().toString());

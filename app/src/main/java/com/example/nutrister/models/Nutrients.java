@@ -3,6 +3,8 @@ package com.example.nutrister.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Nutrients {
     @SerializedName("ENERC_KCAL")
     @Expose
@@ -59,6 +61,7 @@ public class Nutrients {
     public void setFibtg(Double fibtg) {
         this.fibtg = fibtg;
     }
+
 
     @Override
     public String toString() {

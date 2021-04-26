@@ -18,6 +18,8 @@ public class FoodResponses {
         this.parsed = parsed;
     }
 
+
+
     @Override
     public String toString() {
         return "FoodResponse{" +
