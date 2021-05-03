@@ -1,9 +1,11 @@
 package com.example.nutrister;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -82,6 +84,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         //setOnclick
         updateProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 if (!validateHeight() | !validateWeight() | !validateExercise() | !validateDrink() | !validateSmoke() | !validateSugar() | !validatePressure() | !validateCholesterol()) {
@@ -119,6 +122,10 @@ public class UpdateProfile extends AppCompatActivity {
                 String healthIndexValue = healthIndex.result;
                 String healthIndex1 = healthIndex.index1;
                 String healthIndex2 = healthIndex.index2;
+
+                //Generate suggestion
+                Suggestion suggestion = new Suggestion(healthIndex2, healthIndex1);
+                suggestion.generateSuggestion();
 
                 UserInformation userinformation = new UserInformation();
                 userinformation.collectProfileUpdate(weightValue,heightValue,exercise,drink,smoke,pressure,sugar,cholesterol);
