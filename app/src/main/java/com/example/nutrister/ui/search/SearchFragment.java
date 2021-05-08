@@ -1,5 +1,6 @@
 package com.example.nutrister.ui.search;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,10 +54,11 @@ public class SearchFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchFood(newText);
+                queryFood(newText);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,searchResult);
+                arrayAdapter.notifyDataSetChanged();
                 mListView.setAdapter(arrayAdapter);
-                arrayAdapter.getFilter().filter(newText);
+
                 return false;
             }
         });
@@ -64,7 +66,7 @@ public class SearchFragment extends Fragment {
         return root;
     }
 
-    private void GetRetrofitResponse() {
+    private void searchFood() {
         FoodApi foodapi = Servicey.getFoodApi();
 
         Call<FoodResponses> responseCall = foodapi
@@ -100,7 +102,7 @@ public class SearchFragment extends Fragment {
 
     }
 
-    private void searchFood(String newText) {
+    private void queryFood(String newText) {
         FoodApi foodapi = Servicey.getFoodApi();
 
         Call<List> responseCall = foodapi
@@ -114,12 +116,16 @@ public class SearchFragment extends Fragment {
             public void onResponse(Call<List> call, Response<List> response) {
                 if (response.code() == 200) {
                     Object[] list = response.body().toArray();
-
-                    for (int x=0; x<10; x++){
-                        searchResult.add((String) list[x]);
+                    if (searchResult.isEmpty()) {
+                        for (int x = 0; x < list.length; x++) {
+                            searchResult.add((String) list[x]);
+                        }
+                    } else {
+                        searchResult.clear();
+                        for (int x = 0; x < list.length; x++) {
+                            searchResult.add((String) list[x]);
+                        }
                     }
-
-
                 } else {
                     try {
                         Log.v("Tag", "Error"+ response.errorBody().toString());
@@ -127,6 +133,7 @@ public class SearchFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }
+
             }
 
             @Override
@@ -137,6 +144,24 @@ public class SearchFragment extends Fragment {
         });
 
     }
+
+    public void showProgressBar (SearchView mSearchView, Context context){
+        int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        if (mSearchView.findViewById(id).findViewById(R.id.search_progress_bar) != null)
+            mSearchView.findViewById(id).findViewById(R.id.search_progress_bar).animate().setDuration(200).alpha(1).start();
+
+        else
+        {
+            View v = LayoutInflater.from(context).inflate(R.layout.loading_icon, null);
+            ((ViewGroup) mSearchView.findViewById(id)).addView(v, 1);
+        }
+    }
+    public void hideProgressBar(SearchView mSearchView){
+        int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
+        if (mSearchView.findViewById(id).findViewById(R.id.search_progress_bar) != null)
+            mSearchView.findViewById(id).findViewById(R.id.search_progress_bar).animate().setDuration(200).alpha(0).start();
+    }
+
 
 
 }
