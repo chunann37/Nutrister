@@ -26,50 +26,22 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchTitle"
+                android:queryHint="Search here"
+                android:iconifiedByDefault="false"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="1dp"
                 android:layout_marginTop="15dp">
 
             </SearchView>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_below="@id/searchView">
 
-            </Button>
-
-            <TextView
-                android:id="@+id/dataTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/searchView"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="15dp"
-                android:textSize="20sp"
-                >
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/historyTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="History"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/searchView"
-                android:layout_marginLeft="18dp"
-                android:layout_marginStart="18dp">
-
-            </TextView>
+            </ListView>
 
 
         </RelativeLayout>

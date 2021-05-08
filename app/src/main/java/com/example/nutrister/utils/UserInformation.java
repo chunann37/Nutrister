@@ -1,4 +1,4 @@
-package com.example.nutrister;
+package com.example.nutrister.utils;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
