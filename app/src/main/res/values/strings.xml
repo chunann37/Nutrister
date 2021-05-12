@@ -40,5 +40,8 @@
     <string name="update_your_profile">Update your profile</string>
     <string name="suggestion_for_you">Suggestion for you</string>
     <string name="app_label">Nutrister</string>
+    <string name="g">g</string>
+    <string name="kcal">kcal</string>
+    <string name="mg">mg</string>
 
 </resources>

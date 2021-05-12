@@ -166,36 +166,6 @@
         android:layout_marginStart="20dp"
         />
 
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline8"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_below="@id/sugestAdvice5"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        />-->
-
-<!--    <androidx.constraintlayout.widget.Guideline-->
-<!--        android:id="@+id/guideline9"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_below="@id/guideline8"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        />-->
-
-<!--    <androidx.constraintlayout.widget.Barrier-->
-<!--        android:id="@+id/barrier4"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:barrierDirection="left"-->
-<!--        android:layout_below="@id/guideline9"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        />-->
-
     <Button
         android:id="@+id/refreshButton"
         android:layout_width="wrap_content"
