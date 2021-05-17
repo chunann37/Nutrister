@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -27,6 +28,7 @@ import com.example.nutrister.utils.FoodApi;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -81,7 +83,17 @@ public class SearchFragment extends Fragment {
         arrayAdapter.notifyDataSetChanged();
         mListView.setAdapter(arrayAdapter);
 
-    }
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = (String) parent.getItemAtPosition(position);
+                searchFood(selectedItem);
+            }
+        });
+
+        }
+
+
 
     private void searchFood(String query) {
         FoodApi foodapi = Servicey.getFoodApi();
@@ -103,14 +115,22 @@ public class SearchFragment extends Fragment {
                     Intent intent = new Intent(SearchFragment.this.getActivity(), SearchActivity.class);
 
                     for (Parsed foods: food){
-                        Log.v("Tag", "the enercKcal" + foods.getFood().getNutrients().getEnercKcal());
                         intent.putExtra("categoryName",foods.getFood().getCategory());
-                        intent.putExtra("energy",foods.getFood().getNutrients().getEnercKcal().toString());
-                        intent.putExtra("carbs",foods.getFood().getNutrients().getChocdf().toString());
-                        intent.putExtra("protein",foods.getFood().getNutrients().getProcnt().toString());
-                        intent.putExtra("fat",foods.getFood().getNutrients().getFat().toString());
-                        intent.putExtra("fiber",foods.getFood().getNutrients().getFibtg().toString());
+                        intent.putExtra("label", foods.getFood().getLabel());
                         intent.putExtra("image",foods.getFood().getImage());
+
+                        DecimalFormat df = new DecimalFormat("0.00");
+                        String roundedEnergy = df.format(foods.getFood().getNutrients().getEnercKcal());
+                        String roundedCarbs = df.format(foods.getFood().getNutrients().getChocdf());
+                        String roundedProtein = df.format(foods.getFood().getNutrients().getProcnt());
+                        String roundedFat = df.format(foods.getFood().getNutrients().getFat());
+                        String roundedFiber = df.format(foods.getFood().getNutrients().getFibtg());
+                        intent.putExtra("energy",roundedEnergy);
+                        intent.putExtra("carbs",roundedCarbs);
+                        intent.putExtra("protein",roundedProtein);
+                        intent.putExtra("fat",roundedFat);
+                        intent.putExtra("fiber",roundedFiber);
+
                     }
                     startActivity(intent);
                 } else {

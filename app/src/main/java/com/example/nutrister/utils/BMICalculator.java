@@ -16,9 +16,7 @@ public class BMICalculator {
             float bmi = weightValue / (heightValue * heightValue);
 
             DecimalFormat df = new DecimalFormat("0.00");
-            String roundedBmi = df.format(bmi);
-
-            BMIvalue = roundedBmi;
+            BMIvalue = df.format(bmi);
 
             displayBMI(bmi);
         }
