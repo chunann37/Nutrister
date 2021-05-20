@@ -111,7 +111,7 @@ public class Login extends AppCompatActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Login.this, "Error! Reset LInk is not sent " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Error! Reset Link is not sent " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

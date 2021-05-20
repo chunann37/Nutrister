@@ -1,9 +1,11 @@
 package com.example.nutrister;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,6 +18,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.nutrister.utils.BMICalculator;
+import com.example.nutrister.utils.BMRCalculator;
+import com.example.nutrister.utils.HealthIndex;
+import com.example.nutrister.utils.Suggestion;
+import com.example.nutrister.utils.UserInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,6 +89,7 @@ public class UpdateProfile extends AppCompatActivity {
 
         //setOnclick
         updateProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
                 if (!validateHeight() | !validateWeight() | !validateExercise() | !validateDrink() | !validateSmoke() | !validateSugar() | !validatePressure() | !validateCholesterol()) {
@@ -119,6 +127,10 @@ public class UpdateProfile extends AppCompatActivity {
                 String healthIndexValue = healthIndex.result;
                 String healthIndex1 = healthIndex.index1;
                 String healthIndex2 = healthIndex.index2;
+
+                //Generate suggestion
+                Suggestion suggestion = new Suggestion(healthIndex2, healthIndex1);
+                suggestion.generateSuggestion();
 
                 UserInformation userinformation = new UserInformation();
                 userinformation.collectProfileUpdate(weightValue,heightValue,exercise,drink,smoke,pressure,sugar,cholesterol);

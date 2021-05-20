@@ -1,4 +1,4 @@
-package com.example.nutrister;
+package com.example.nutrister.utils;
 
 import android.os.Build;
 import android.util.Log;

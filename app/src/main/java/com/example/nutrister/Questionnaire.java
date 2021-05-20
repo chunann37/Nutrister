@@ -15,6 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nutrister.utils.BMRCalculator;
+import com.example.nutrister.utils.HealthIndex;
+import com.example.nutrister.utils.Suggestion;
+import com.example.nutrister.utils.UserInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

@@ -1,4 +1,4 @@
-package com.example.nutrister;
+package com.example.nutrister.utils;
 
 public class HealthIndex {
     public String result, index1, index2;
