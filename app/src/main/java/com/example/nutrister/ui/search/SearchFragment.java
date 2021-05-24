@@ -1,6 +1,5 @@
 package com.example.nutrister.ui.search;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nutrister.R;
-import com.example.nutrister.SearchActivity;
 import com.example.nutrister.models.FoodResponses;
 import com.example.nutrister.models.Parsed;
 import com.example.nutrister.request.Servicey;
@@ -60,6 +58,7 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchFood(query);
+                mSearchView.clearFocus();
                 return false;
             }
 
@@ -69,6 +68,14 @@ public class SearchFragment extends Fragment {
                 CompletableFuture future = new CompletableFuture<>();
                 queryFood(newText, future);
                 future.thenAccept(x -> updateArray());
+
+                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String selectedItem = (String) parent.getItemAtPosition(position);
+                        searchFood(selectedItem);
+                    }
+                });
 
                 return false;
             }
@@ -82,17 +89,7 @@ public class SearchFragment extends Fragment {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, searchResult);
         arrayAdapter.notifyDataSetChanged();
         mListView.setAdapter(arrayAdapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = (String) parent.getItemAtPosition(position);
-                searchFood(selectedItem);
-            }
-        });
-
         }
-
 
 
     private void searchFood(String query) {
@@ -110,29 +107,31 @@ public class SearchFragment extends Fragment {
                     assert response.body() != null;
                     Log.v("Tag", "the response"+ response.body().toString());
 
-                    List<Parsed> food = new ArrayList<>(response.body().getParsed());
+                    if (response.body().getParsed().isEmpty()){
+                        startActivity(new Intent (SearchFragment.this.getActivity(),Search_NotFound.class));
+                    } else {
+                        List<Parsed> food = new ArrayList<>(response.body().getParsed());
+                        Intent intent = new Intent(SearchFragment.this.getActivity(), SearchActivity.class);
+                        for (Parsed foods : food) {
+                            intent.putExtra("categoryName", foods.getFood().getCategory());
+                            intent.putExtra("label", foods.getFood().getLabel());
+                            intent.putExtra("image", foods.getFood().getImage());
 
-                    Intent intent = new Intent(SearchFragment.this.getActivity(), SearchActivity.class);
+                            DecimalFormat df = new DecimalFormat("0.00");
+                            String roundedEnergy = df.format(foods.getFood().getNutrients().getEnercKcal());
+                            String roundedCarbs = df.format(foods.getFood().getNutrients().getChocdf());
+                            String roundedProtein = df.format(foods.getFood().getNutrients().getProcnt());
+                            String roundedFat = df.format(foods.getFood().getNutrients().getFat());
+                            String roundedFiber = df.format(foods.getFood().getNutrients().getFibtg());
+                            intent.putExtra("energy", roundedEnergy);
+                            intent.putExtra("carbs", roundedCarbs);
+                            intent.putExtra("protein", roundedProtein);
+                            intent.putExtra("fat", roundedFat);
+                            intent.putExtra("fiber", roundedFiber);
 
-                    for (Parsed foods: food){
-                        intent.putExtra("categoryName",foods.getFood().getCategory());
-                        intent.putExtra("label", foods.getFood().getLabel());
-                        intent.putExtra("image",foods.getFood().getImage());
-
-                        DecimalFormat df = new DecimalFormat("0.00");
-                        String roundedEnergy = df.format(foods.getFood().getNutrients().getEnercKcal());
-                        String roundedCarbs = df.format(foods.getFood().getNutrients().getChocdf());
-                        String roundedProtein = df.format(foods.getFood().getNutrients().getProcnt());
-                        String roundedFat = df.format(foods.getFood().getNutrients().getFat());
-                        String roundedFiber = df.format(foods.getFood().getNutrients().getFibtg());
-                        intent.putExtra("energy",roundedEnergy);
-                        intent.putExtra("carbs",roundedCarbs);
-                        intent.putExtra("protein",roundedProtein);
-                        intent.putExtra("fat",roundedFat);
-                        intent.putExtra("fiber",roundedFiber);
-
+                        }
+                        startActivity(intent);
                     }
-                    startActivity(intent);
                 } else {
                     try {
                         assert response.errorBody() != null;
@@ -142,10 +141,9 @@ public class SearchFragment extends Fragment {
                     }
                 }
             }
-
             @Override
             public void onFailure(@NotNull Call<FoodResponses> call, @NotNull Throwable t) {
-
+                Log.d("ERROR", t.getMessage());
             }
         });
 
@@ -191,28 +189,10 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onFailure(@NotNull Call<List> call, @NotNull Throwable t) {
-                Log.v("Tag", "Error"+ t.toString());
-
+                Log.d("ERROR", t.getMessage());
             }
         });
 
-    }
-
-    public void showProgressBar (SearchView mSearchView, Context context){
-        int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
-        if (mSearchView.findViewById(id).findViewById(R.id.search_progress_bar) != null)
-            mSearchView.findViewById(id).findViewById(R.id.search_progress_bar).animate().setDuration(200).alpha(1).start();
-
-        else
-        {
-            View v = LayoutInflater.from(context).inflate(R.layout.loading_icon, null);
-            ((ViewGroup) mSearchView.findViewById(id)).addView(v, 1);
-        }
-    }
-    public void hideProgressBar(SearchView mSearchView){
-        int id = mSearchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null);
-        if (mSearchView.findViewById(id).findViewById(R.id.search_progress_bar) != null)
-            mSearchView.findViewById(id).findViewById(R.id.search_progress_bar).animate().setDuration(200).alpha(0).start();
     }
 
 

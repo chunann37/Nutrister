@@ -3,12 +3,14 @@ package com.example.nutrister;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -51,6 +53,8 @@ public class UpdateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
         mWeight = findViewById(R.id.weightType);
         mHeight = findViewById(R.id.heightType);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Update Profile");
+
 
         //Exercise dropdown list
         mExercise = findViewById(R.id.exerciseSpinner);
@@ -168,6 +172,19 @@ public class UpdateProfile extends AppCompatActivity {
         });
     }
 
+    //Back to previous fragment
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent parentIntent = NavUtils.getParentActivityIntent(this);
+            assert parentIntent != null;
+            parentIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(parentIntent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private boolean validateWeight() {
         String weight = mWeight.getText().toString().trim();
