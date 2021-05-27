@@ -30,15 +30,15 @@ public class AutoDeletion {
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
         String currentDate = df.format(c);
 
+
         //Breakfast
         Query bfItem = db.collection("users_food_log").document(userID).collection("Breakfast").whereNotEqualTo("date", currentDate);
-        String finalUserID = userID;
         bfItem.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                        db.collection("users_food_log").document(finalUserID).
+                        db.collection("users_food_log").document(userID).
                                 collection("Breakfast").document(document.getId()).delete();
                     }
                 } else {
@@ -49,13 +49,12 @@ public class AutoDeletion {
 
         //Lunch
         Query lcItem = db.collection("users_food_log").document(userID).collection("Lunch").whereNotEqualTo("date", currentDate);
-        String finalUserID1 = userID;
         lcItem.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                        db.collection("users_food_log").document(finalUserID1).
+                        db.collection("users_food_log").document(userID).
                                 collection("Lunch").document(document.getId()).delete();
                     }
                 } else {
@@ -66,13 +65,12 @@ public class AutoDeletion {
 
         //Dinner
         Query dnItem = db.collection("users_food_log").document(userID).collection("Dinner").whereNotEqualTo("date", currentDate);
-        String finalUserID2 = userID;
         dnItem.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                        db.collection("users_food_log").document(finalUserID2).
+                        db.collection("users_food_log").document(userID).
                                 collection("Dinner").document(document.getId()).delete();
                     }
                 } else {
@@ -83,13 +81,12 @@ public class AutoDeletion {
 
         //Snack
         Query snItem = db.collection("users_food_log").document(userID).collection("Snack").whereNotEqualTo("date", currentDate);
-        String finalUserID3 = userID;
         snItem.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-                        db.collection("users_food_log").document(finalUserID3).
+                        db.collection("users_food_log").document(userID).
                                 collection("Snack").document(document.getId()).delete();
                     }
                 } else {
