@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.search.SearchActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food information"
+                    android:textSize="30sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true">
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/title"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/foodLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/labelInput"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Food Label"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/categoryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/categoryInput"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Category"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/energy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/categoryText"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Energy"
+                    android:textSize="18sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/carbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/energy"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Carbs"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/protein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/carbs"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Protein"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/protein"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Fat"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fiber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fat"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Fiber"
+                    android:textSize="18sp">
+                </TextView>
+
+
+                <TextView
+                    android:id="@+id/categoryInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/labelInput"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="category"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/labelInput"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/imageView"
+                    android:text="food label"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/energyInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/energy"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="energy"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/carbsInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/carbs"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="carbs"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/proteinInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/protein"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="protein"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fatInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/fat"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:text="fat"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fiberInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/fiber"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginLeft="50dp"
+                    android:text="fiber"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/energyUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/energyInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/energyInput"
+                    android:layout_toRightOf="@id/energyInput"
+                    android:text="@string/kcal"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/carbsUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/carbsInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/carbsInput"
+                    android:layout_toRightOf="@id/carbsInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/proteinUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/proteinInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/proteinInput"
+                    android:layout_toRightOf="@id/proteinInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fatUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/fatInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/fatInput"
+                    android:layout_toRightOf="@id/fatInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fiberUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/fiberInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/fiberInput"
+                    android:layout_toRightOf="@id/fiberInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/mealCatalog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fiber"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:text="Meal"
+                    android:textSize="18sp">
+                </TextView>
+
+                <Spinner
+                    android:id="@+id/mealSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fiberInput"
+                    android:layout_marginTop="25dp"
+                    android:layout_alignLeft="@id/fiberInput"
+                    android:layout_alignStart="@id/fiberInput">
+                </Spinner>
+
+                <TextView
+                    android:id="@+id/servingSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mealCatalog"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:text="Serving Size"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/servingSpinner"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mealSpinner"
+                    android:layout_marginTop="25dp"
+                    android:layout_alignLeft="@id/fiberInput"
+                    android:layout_alignStart="@id/fiberInput"
+                    android:layout_centerHorizontal="true"
+                    android:padding="2dp">
+                </Spinner>
+
+
+                <Button
+                    android:id="@+id/addFood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/servingSize"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="240dp"
+                    android:layout_marginStart="240dp"
+                    android:text="Add to Log"
+                    android:textSize="15sp"
+                    android:onClick="addFood"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
