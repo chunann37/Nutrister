@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrister.R;
+import com.example.nutrister.utils.Accumulation;
 import com.example.nutrister.utils.FoodAdapter;
 import com.example.nutrister.utils.FoodItem;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -197,9 +198,12 @@ public class LogFragment extends Fragment {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onStop() {
         super.onStop();
+        Accumulation accumulation = new Accumulation(userID,fAuth,db);
+        accumulation.doCalculation();
         adapterBf.stopListening();
         adapterLc.stopListening();
         adapterDn.stopListening();
