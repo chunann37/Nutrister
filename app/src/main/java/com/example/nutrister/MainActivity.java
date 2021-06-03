@@ -1,17 +1,20 @@
 package com.example.nutrister;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.nutrister.utils.Accumulation;
 import com.example.nutrister.utils.AutoDeletion;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
         AutoDeletion.deletion(userID,fAuth,db);
-
-
+        Accumulation accumulation = new Accumulation(userID,fAuth,db);
+        accumulation.doCalculation();
 
 
 

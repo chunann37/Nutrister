@@ -46,5 +46,6 @@
     <string name="no_result_found">We cannot find any item matching your search. Please try another search term</string>
     <string name="no_result_found_title">Sorry! No Result Found</string>
     <string name="search_food">Search food</string>
+    <string name="custom_food_desc">Not what you want? Try</string>
 
 </resources>

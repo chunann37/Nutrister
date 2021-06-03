@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nutrister.CustomFood;
 import com.example.nutrister.R;
 
 import java.util.Objects;
@@ -43,5 +45,11 @@ public class Search_NotFound extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void naviToCustom(View view) {
+        finish();
+        Intent in = new Intent(getApplicationContext(), CustomFood.class);
+        startActivity(in);
     }
 }

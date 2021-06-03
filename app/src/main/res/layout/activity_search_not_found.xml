@@ -36,10 +36,35 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/title"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"
             android:layout_marginTop="10dp"
             android:text="@string/no_result_found"
             android:textSize="18sp">
         </TextView>
+
+        <TextView
+            android:id="@+id/descContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/desc"
+            android:layout_marginTop="10dp"
+            android:text="or add food manually below"
+            android:textSize="18sp">
+        </TextView>
+
+        <Button
+            android:id="@+id/customFoodBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descContinue"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="Custom"
+            android:textSize="16sp"
+            android:onClick="naviToCustom"/>
+
 
 
 

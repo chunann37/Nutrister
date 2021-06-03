@@ -28,7 +28,8 @@
                     android:text="Food information"
                     android:textSize="30sp"
                     android:layout_marginTop="10dp"
-                    android:layout_centerHorizontal="true">
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/text_color_primary">
                 </TextView>
 
                 <ImageView
@@ -49,7 +50,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="30dp"
                     android:text="Food Label"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <TextView
@@ -61,7 +63,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Category"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <TextView
@@ -73,7 +76,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Energy"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
 
                 </TextView>
 
@@ -86,7 +90,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Carbs"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <TextView
@@ -98,7 +103,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Protein"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <TextView
@@ -110,7 +116,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Fat"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <TextView
@@ -122,7 +129,8 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:text="Fiber"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
 
@@ -278,7 +286,8 @@
                     android:layout_marginStart="50dp"
                     android:layout_marginLeft="50dp"
                     android:text="Meal"
-                    android:textSize="18sp">
+                    android:textSize="18sp"
+                    android:textColor="@color/black">
                 </TextView>
 
                 <Spinner
@@ -298,7 +307,6 @@
                     android:layout_below="@id/mealCatalog"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
                     android:text="Serving Size"
                     android:textSize="18sp" />
 
@@ -307,11 +315,8 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mealSpinner"
-                    android:layout_marginTop="25dp"
-                    android:layout_alignLeft="@id/fiberInput"
-                    android:layout_alignStart="@id/fiberInput"
-                    android:layout_centerHorizontal="true"
-                    android:padding="2dp">
+                    android:layout_marginTop="20dp"
+                    android:layout_alignStart="@id/fiberInput">
                 </Spinner>
 
 
@@ -319,14 +324,31 @@
                     android:id="@+id/addFood"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/servingSize"
-                    android:layout_marginTop="30dp"
+                    android:layout_below="@id/servingSpinner"
                     android:layout_marginLeft="240dp"
                     android:layout_marginStart="240dp"
                     android:text="Add to Log"
                     android:textSize="15sp"
                     android:onClick="addFood"/>
 
+                <TextView
+                    android:id="@+id/customFoodDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/addFood"
+                    android:layout_alignStart="@id/addFood"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/custom_food_desc"/>
+
+                <Button
+                    android:id="@+id/customFoodBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/customFoodDesc"
+                    android:layout_alignStart="@id/customFoodDesc"
+                    android:text="Custom"
+                    android:textSize="14sp"
+                    android:onClick="naviToCustom"/>
 
             </RelativeLayout>
         </LinearLayout>

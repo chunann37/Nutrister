@@ -1,37 +1,27 @@
-package com.example.nutrister.ui.search;
+package com.example.nutrister;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.nutrister.CustomFood;
-import com.example.nutrister.R;
-import com.example.nutrister.UpdateProfile;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.nutrister.ui.search.SearchActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,118 +32,152 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
 
-public class SearchActivity extends AppCompatActivity {
-
-    TextView categoryName,foodLabel, foodEnergy, foodCarbs, foodProtein, foodFat, foodFiber;
-    ImageView image;
+public class CustomFood extends AppCompatActivity {
+    EditText mFoodLabel, mEnergyInput, mCarbsInput, mProteinInput, mFatInput, mFiberInput;
     Spinner mealSpinner, servingSpinner;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID, mealName, servingSize, mFoodLabel, mFoodEnergy, mFoodCarbs, mFoodProtein, mFoodFat, mFoodFiber;
-    Button customFoodBtn;
+    String userID,mealName, servingSize;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-        categoryName = findViewById(R.id.categoryInput);
-        foodLabel = findViewById(R.id.labelInput);
-        foodEnergy = findViewById(R.id.energyInput);
-        foodCarbs = findViewById(R.id.carbsInput);
-        foodProtein = findViewById(R.id.proteinInput);
-        foodFat = findViewById(R.id.fatInput);
-        foodFiber = findViewById(R.id.fiberInput);
-        image = findViewById(R.id.imageView);
-        customFoodBtn = findViewById(R.id.customFoodBtn);
-
-        //get Value from searchFragment
-        Intent intent = getIntent();
-        categoryName.setText(intent.getStringExtra("categoryName"));
-        foodLabel.setText(intent.getStringExtra("label"));
-        foodEnergy.setText(intent.getStringExtra("energy"));
-        foodCarbs.setText(intent.getStringExtra("carbs"));
-        foodProtein.setText(intent.getStringExtra("protein"));
-        foodFat.setText(intent.getStringExtra("fat"));
-        foodFiber.setText(intent.getStringExtra("fiber"));
-
-        mFoodLabel = intent.getStringExtra("label");
-        mFoodEnergy = intent.getStringExtra("energy");
-        mFoodCarbs = intent.getStringExtra("carbs");
-        mFoodProtein = intent.getStringExtra("protein");
-        mFoodFat = intent.getStringExtra("fat");
-        mFoodFiber = intent.getStringExtra("fiber");
-
-        String imageUrl = intent.getStringExtra("image");
-        if (imageUrl == null) {
-            Glide.with(this).load("https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png").into(image);
-        } else {
-            Glide.with(this).load(imageUrl).into(image);
-        }
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Search Result");
-
+        setContentView(R.layout.activity_custom_food);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Create custom food data");
+        mFoodLabel = findViewById(R.id.foodNameInput);
+        mEnergyInput = findViewById(R.id.energyInput);
+        mCarbsInput = findViewById(R.id.carbsInput);
+        mProteinInput = findViewById(R.id.proteinInput);
+        mFatInput = findViewById(R.id.fatInput);
+        mFiberInput = findViewById(R.id.fiberInput);
+        mealSpinner = findViewById(R.id.mealSpinner);
+        servingSpinner = findViewById(R.id.servingSpinner);
         //Firebase
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
-
         //Meal Drop-down list
         mealSpinner = findViewById(R.id.mealSpinner);
         String[] mealList = getResources().getStringArray(R.array.meal_list);
         ArrayAdapter mealAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, mealList);
         mealAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mealSpinner.setAdapter(mealAdapter);
-
         //Serving size Drop-down list
         servingSpinner = findViewById(R.id.servingSpinner);
         String[] servingList = getResources().getStringArray(R.array.serving_size);
         ArrayAdapter servingAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, servingList);
         servingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         servingSpinner.setAdapter(servingAdapter);
-
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void addFood(View view) {
-
+    public void addCustomFood(View view) {
+        if (!validateLabel() | !validateEnergy() | !validateCarbs() | !validateProtein() | !validateFat() | !validateFiber()) {
+            return;
+        }
         mealName = mealSpinner.getSelectedItem().toString().trim();
         servingSize = servingSpinner.getSelectedItem().toString().trim();
+        String foodLabel = mFoodLabel.getText().toString().trim();
+        String foodEnergy = mEnergyInput.getText().toString().trim();
+        String foodCarbs = mCarbsInput.getText().toString().trim();
+        String foodProtein = mProteinInput.getText().toString().trim();
+        String foodFat = mFatInput.getText().toString().trim();
+        String foodFiber = mFiberInput.getText().toString().trim();
 
-        uploadInfo();
-    }
-
-    private void uploadInfo() {
-
+        //Date
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
         String formattedDate = df.format(c);
-        //upload
+
+        //upload to FireStore
         CollectionReference db = fStore.collection("users_food_log").document(userID).collection(mealName);
         Map<String, Object> user = new HashMap<>();
-        user.put("foodLabel", mFoodLabel);
-        user.put("foodEnergy", mFoodEnergy);
-        user.put("foodCarbs", mFoodCarbs);
-        user.put("foodProtein", mFoodProtein);
-        user.put("foodFat", mFoodFat);
-        user.put("foodFiber", mFoodFiber);
+        user.put("foodLabel", foodLabel);
+        user.put("foodEnergy", foodEnergy);
+        user.put("foodCarbs", foodCarbs);
+        user.put("foodProtein", foodProtein);
+        user.put("foodFat", foodFat);
+        user.put("foodFiber", foodFiber);
         user.put("foodServing", servingSize);
         user.put("date", formattedDate);
         db.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Log.d("","Food added successfully");
-                Toast.makeText(SearchActivity.this, "Food added successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomFood.this,"Food added successfully",Toast.LENGTH_SHORT).show();
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
                 Log.d("", "onFailure: " + e.toString());
-                Toast.makeText(SearchActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomFood.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
 
         });
+
+    }
+
+    private boolean validateFiber() {
+        String foodfiber = mFiberInput.getText().toString().trim();
+        if (TextUtils.isEmpty(foodfiber)) {
+            mFiberInput.setError("Food fiber is required.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateFat() {
+        String foodfat = mFatInput.getText().toString().trim();
+        if (TextUtils.isEmpty(foodfat)) {
+            mFatInput.setError("Food fat is required.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateProtein() {
+        String foodprotein = mProteinInput.getText().toString().trim();
+        if (TextUtils.isEmpty(foodprotein)) {
+            mProteinInput.setError("Food protein is required.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateCarbs() {
+        String foodcarbs = mCarbsInput.getText().toString().trim();
+        if (TextUtils.isEmpty(foodcarbs)) {
+            mCarbsInput.setError("Food carbs is required.");
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    private boolean validateEnergy() {
+        String foodenergy = mEnergyInput.getText().toString().trim();
+        if (TextUtils.isEmpty(foodenergy)) {
+            mEnergyInput.setError("Food energy is required.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private boolean validateLabel() {
+        String foodlabel = mFoodLabel.getText().toString().trim();
+        if (TextUtils.isEmpty(foodlabel)) {
+            mFoodLabel.setError("Food name is required.");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     //Back to previous fragment
@@ -168,10 +192,5 @@ public class SearchActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void naviToCustom(View view) {
-        Intent in = new Intent(getApplicationContext(), CustomFood.class);
-        startActivity(in);
     }
 }

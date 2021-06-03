@@ -17,7 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 
 import com.example.nutrister.R;
-import com.example.nutrister.utils.Accumulation;
+import com.example.nutrister.utils.CustomPercentFormatter;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -33,7 +33,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
@@ -129,9 +128,9 @@ public class HomeFragment extends Fragment {
         legend.setTextSize(18f);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-        legend.setOrientation(Legend.LegendOrientation.VERTICAL);
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         legend.setDrawInside(false);
-        legend.setEnabled(false);
+        legend.setEnabled(true);
         legend.setWordWrapEnabled(true);
 
     }
@@ -150,13 +149,14 @@ public class HomeFragment extends Fragment {
 
         PieData data = new PieData(dataSet);
         data.setDrawValues(true);
-        data.setValueFormatter(new PercentFormatter(pieChart));
-        data.setValueTextSize(16f);
+        data.setValueTextSize(20f);
         data.setValueTextColor(Color.BLACK);
+        data.setValueFormatter(new CustomPercentFormatter());
 
         pieChart.setData(data);
         pieChart.invalidate();
-
+        pieChart.setDrawEntryLabels(false);
+        pieChart.getData().setDrawValues(true);
         pieChart.animateY(1400, Easing.EaseInOutQuad);
     }
 
