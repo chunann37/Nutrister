@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,9 +45,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class ProfileFragment extends Fragment {
     TextView username, weight, height, bmi, bmr, bmiStatus;
+    ImageView profileImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID;
+    String userID, gender;
     Button profileBtn, logoutBtn;
     LineChart lineChart;
 
@@ -64,6 +66,7 @@ public class ProfileFragment extends Fragment {
                 new ViewModelProvider(this).get(ProfileViewModel.class);
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         username = view.findViewById(R.id.profileName);
+        profileImage = view.findViewById(R.id.imageView);
         weight = view.findViewById(R.id.profileWeight);
         height = view.findViewById(R.id.profileHeight);
         bmi = view.findViewById(R.id.profileBMI);
@@ -177,6 +180,15 @@ public class ProfileFragment extends Fragment {
                 bmi.setText(documentSnapshot.getString("bmiValue"));
                 bmiStatus.setText(documentSnapshot.getString("bmiStatus"));
                 bmr.setText(documentSnapshot.getString("bmrValue"));
+                gender = documentSnapshot.getString("gender");
+
+                if(gender.equals("Male")){
+
+                    profileImage.setImageResource(R.drawable.profile_male);
+                } else {
+                    profileImage.setImageResource(R.drawable.profile_female);
+                }
+
             }
         });
 
