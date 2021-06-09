@@ -13,25 +13,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
                 android:text="Looking for something?"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="18dp"
-                android:layout_marginStart="18dp">
-
+                android:textSize="20sp"
+                android:textStyle="bold">
             </TextView>
 
             <SearchView
                 android:id="@+id/searchView"
-                android:layout_width="350dp"
+                android:layout_width="380dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/searchTitle"
                 android:queryHint="Search here"
                 android:iconifiedByDefault="false"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="1dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp">
-
             </SearchView>
 
             <ListView

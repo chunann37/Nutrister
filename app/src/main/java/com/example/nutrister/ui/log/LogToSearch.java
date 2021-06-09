@@ -1,26 +1,30 @@
-package com.example.nutrister.ui.search;
+package com.example.nutrister.ui.log;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NavUtils;
 
 import com.example.nutrister.R;
 import com.example.nutrister.models.FoodResponses;
 import com.example.nutrister.models.Parsed;
 import com.example.nutrister.request.Servicey;
+import com.example.nutrister.ui.search.SearchActivity;
+import com.example.nutrister.ui.search.Search_NotFound;
 import com.example.nutrister.utils.Credentials;
 import com.example.nutrister.utils.FoodApi;
 
@@ -29,36 +33,54 @@ import org.jetbrains.annotations.NotNull;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchFragment extends Fragment {
+public class LogToSearch extends AppCompatActivity {
 
-    private SearchViewModel searchViewModel;
-    private SearchView mSearchView;
     private ListView mListView;
     List<String> searchResult = new ArrayList<>();
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_log_to_search);
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        searchViewModel =
-                new ViewModelProvider(this).get(SearchViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_search, container, false);
+        mListView = findViewById(R.id.foodList);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Search");
 
-        mSearchView = root.findViewById(R.id.searchView);
-        mListView = root.findViewById(R.id.listView);
+    }
+    //Back to previous fragment
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent parentIntent = NavUtils.getParentActivityIntent(this);
+            assert parentIntent != null;
+            parentIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(parentIntent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        MenuItem item = menu.findItem(R.id.search_food);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
 
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 searchFood(query);
-                mSearchView.clearFocus();
+                searchView.clearFocus();
                 return false;
             }
 
@@ -76,21 +98,19 @@ public class SearchFragment extends Fragment {
                         searchFood(selectedItem);
                     }
                 });
-
                 return false;
             }
-
         });
+        return super.onCreateOptionsMenu(menu);
 
-        return root;
+
     }
 
-    private void updateArray(){
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, searchResult);
+    private void updateArray() {
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, searchResult);
         arrayAdapter.notifyDataSetChanged();
         mListView.setAdapter(arrayAdapter);
-        }
-
+    }
 
     private void searchFood(String query) {
         FoodApi foodapi = Servicey.getFoodApi();
@@ -105,13 +125,13 @@ public class SearchFragment extends Fragment {
             public void onResponse(@NotNull Call<FoodResponses> call, @NotNull Response<FoodResponses> response) {
                 if (response.code() == 200) {
                     assert response.body() != null;
-                    Log.v("Tag", "the response"+ response.body().toString());
+                    Log.v("Tag", "the response" + response.body().toString());
 
-                    if (response.body().getParsed().isEmpty()){
-                        startActivity(new Intent (SearchFragment.this.getActivity(),Search_NotFound.class));
+                    if (response.body().getParsed().isEmpty()) {
+                        startActivity(new Intent(getApplicationContext(), Search_NotFound.class));
                     } else {
                         List<Parsed> food = new ArrayList<>(response.body().getParsed());
-                        Intent intent = new Intent(SearchFragment.this.getActivity(), SearchActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
                         for (Parsed foods : food) {
                             intent.putExtra("categoryName", foods.getFood().getCategory());
                             intent.putExtra("label", foods.getFood().getLabel());
@@ -135,12 +155,13 @@ public class SearchFragment extends Fragment {
                 } else {
                     try {
                         assert response.errorBody() != null;
-                        Log.v("Tag", "Error"+ response.errorBody().toString());
+                        Log.v("Tag", "Error" + response.errorBody().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
+
             @Override
             public void onFailure(@NotNull Call<FoodResponses> call, @NotNull Throwable t) {
                 Log.d("ERROR", t.getMessage());
@@ -179,7 +200,7 @@ public class SearchFragment extends Fragment {
                 } else {
                     try {
                         assert response.errorBody() != null;
-                        Log.v("Tag", "Error"+ response.errorBody().toString());
+                        Log.v("Tag", "Error" + response.errorBody().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -194,7 +215,4 @@ public class SearchFragment extends Fragment {
         });
 
     }
-
-
-
 }

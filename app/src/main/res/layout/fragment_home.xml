@@ -1,37 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:text="Home Fragment"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
 
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home"
-        android:onClick="logout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/progressBarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignLeft="@id/caloriesProgressBar"
+                    android:text="Calories Consumed"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/bmrValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_alignParentRight="true"
+                    android:text="BMR"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/backslash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_toStartOf="@id/bmrValue"
+                    android:layout_toLeftOf="@id/bmrValue"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="/"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/consumedValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@id/backslash"
+                    android:layout_toLeftOf="@id/backslash"
+                    android:text="Consumed"
+                    android:textSize="18sp"/>
+
+                <ProgressBar
+                    android:id="@+id/caloriesProgressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="350dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/progressBarTitle"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:indeterminate="false"
+                    android:scaleY="3"/>
+
+                <TextView
+                    android:id="@+id/pieChartTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/caloriesProgressBar"
+                    android:layout_alignLeft="@id/caloriesProgressBar"
+                    android:text="Nutrients Consumed"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/showCarbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_alignLeft="@id/caloriesProgressBar"
+                    android:text="Carbs"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/carbsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_alignBaseline="@id/carbsUnit"
+                    android:layout_toStartOf="@+id/carbsUnit"
+                    android:text="Carbs Value"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/carbsUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_alignBaseline="@id/showCarbs"
+                    android:layout_alignEnd="@id/pieChartTitle"
+                    android:text="g"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/showProtein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/showCarbs"
+                    android:layout_alignLeft="@id/caloriesProgressBar"
+                    android:text="Protein"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/proteinValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_alignBaseline="@id/proteinUnit"
+                    android:layout_toStartOf="@+id/proteinUnit"
+                    android:text="Protein Value"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/proteinUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_alignBaseline="@id/showProtein"
+                    android:layout_alignEnd="@id/pieChartTitle"
+                    android:text="g"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/showFat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showCarbs"
+                    android:layout_toEndOf="@id/carbsValue"
+                    android:layout_marginLeft="35dp"
+                    android:text="Fat"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/fatValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showFat"
+                    android:layout_toStartOf="@id/fatUnit"
+                    android:text="Fat Value"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/fatUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showFat"
+                    android:layout_alignEnd="@id/bmrValue"
+                    android:text="g"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/showFiber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showProtein"
+                    android:layout_toEndOf="@id/carbsValue"
+                    android:layout_marginLeft="35dp"
+                    android:text="Fiber"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/fiberValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showFiber"
+                    android:layout_toStartOf="@id/fiberUnit"
+                    android:text="Fiber Value"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/fiberUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/showFiber"
+                    android:layout_alignEnd="@id/bmrValue"
+                    android:text="g"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="350dp"
+                    android:layout_height="350dp"
+                    android:layout_below="@id/showProtein"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_alignLeft="@id/caloriesProgressBar"/>
+                
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/pieChart"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

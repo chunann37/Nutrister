@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nutrister.ui.search.SearchActivity;
 import com.example.nutrister.utils.BMRCalculator;
 import com.example.nutrister.utils.HealthIndex;
 import com.example.nutrister.utils.Suggestion;
@@ -22,10 +23,16 @@ import com.example.nutrister.utils.UserInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -154,6 +161,34 @@ public class Questionnaire extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.d("", "onFailure: " + e.toString());
+            }
+        });
+        DocumentReference baseRef = fStore.collection("users_food_log").document(userID);
+        Map<String, Object> base = new HashMap<>();
+        base.put("bmrValue",bmrValue);
+        base.put("totalEnergy",0);
+        base.put("totalCarbs",0);
+        base.put("totalProtein",0);
+        base.put("totalFat",0);
+        base.put("totalFiber",0);
+        baseRef.set(base).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("", "Constructed food log" + userID);
+            }
+        });
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yy", Locale.getDefault());
+        String formattedDate = df.format(c);
+        CollectionReference db = fStore.collection("users").document(userID).collection("weight_history");
+        Map<String, Object> weightHistory = new HashMap<>();
+        weightHistory.put("weight", weightValue);
+        weightHistory.put("date", formattedDate);
+        weightHistory.put("timestamp", FieldValue.serverTimestamp());
+        db.add(weightHistory).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d("","Weight history updated successfully");
             }
         });
         startActivity(new Intent(getApplicationContext(), MainActivity.class));

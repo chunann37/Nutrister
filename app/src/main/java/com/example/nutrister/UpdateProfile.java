@@ -3,12 +3,14 @@ package com.example.nutrister;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.nutrister.utils.Accumulation;
 import com.example.nutrister.utils.BMICalculator;
 import com.example.nutrister.utils.BMRCalculator;
 import com.example.nutrister.utils.HealthIndex;
@@ -26,11 +29,17 @@ import com.example.nutrister.utils.UserInformation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -51,6 +60,8 @@ public class UpdateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_update_profile);
         mWeight = findViewById(R.id.weightType);
         mHeight = findViewById(R.id.heightType);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Update Profile");
+
 
         //Exercise dropdown list
         mExercise = findViewById(R.id.exerciseSpinner);
@@ -162,12 +173,55 @@ public class UpdateProfile extends AppCompatActivity {
                         Log.d("", "onFailure: " + e.toString());
                     }
                 });
+                DocumentReference baseRef = fStore.collection("users_food_log").document(userID);
+                Map<String, Object> base = new HashMap<>();
+                base.put("bmrValue",bmrValue);
+                base.put("totalEnergy",0);
+                base.put("totalCarbs",0);
+                base.put("totalProtein",0);
+                base.put("totalFat",0);
+                base.put("totalFiber",0);
+                baseRef.set(base).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("", "Constructed food log" + userID);
+                    }
+                });
+                Date c = Calendar.getInstance().getTime();
+                SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
+                String formattedDate = df.format(c);
+                CollectionReference db = fStore.collection("users").document(userID).collection("weight_history");
+                Map<String, Object> weightHistory = new HashMap<>();
+                weightHistory.put("weight", weightValue);
+                weightHistory.put("date", formattedDate);
+                weightHistory.put("timestamp", FieldValue.serverTimestamp());
+                db.add(weightHistory).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("","Weight history updated successfully");
+                    }
+                });
+
+
                 Intent intent = new Intent( getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+    //Back to previous fragment
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent parentIntent = NavUtils.getParentActivityIntent(this);
+            assert parentIntent != null;
+            parentIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            startActivity(parentIntent);
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private boolean validateWeight() {
         String weight = mWeight.getText().toString().trim();

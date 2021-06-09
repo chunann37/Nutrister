@@ -3,17 +3,37 @@
 
     <string-array name="exercise_frequency">
     <item>little or no exercise</item>
-    <item>light exercise or sports 1-3 days/week</item>
-    <item>moderate exercise 3-5 days/week)</item>
-    <item>hard exercise 6-7 days/week</item>
+    <item>light exercise or sports 1–3 days/week</item>
+    <item>moderate exercise 3–5 days/week)</item>
+    <item>hard exercise 6–7 days/week</item>
     <item>very hard exercise and a physical job</item>
     </string-array>
 
     <string-array name="drink_frequency">
         <item>little or no drink</item>
-        <item>light drinking 1-3 days/week</item>
-        <item>moderate drinking 3-5 days/week)</item>
-        <item>heavy drinking 6-7 days/week</item>
+        <item>light drinking 1–3 days/week</item>
+        <item>moderate drinking 3–5 days/week)</item>
+        <item>heavy drinking 6–7 days/week</item>
+    </string-array>
+
+    <string-array name="meal_list">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+    </string-array>
+
+    <string-array name="serving_size">
+        <item>1</item>
+        <item>0.5</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
     </string-array>
 
 </resources>
