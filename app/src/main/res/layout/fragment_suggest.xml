@@ -39,8 +39,7 @@
                     android:layout_below="@id/Suggestion"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/purple_500">
+                    android:layout_marginTop="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -49,8 +48,10 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
                         >
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -59,9 +60,9 @@
                             android:id="@+id/suggestTitle0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingStart="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
+                            android:paddingStart="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
                             android:text="TextView"
                             android:textColor="@color/black"
                             android:textSize="20sp" />
@@ -71,14 +72,15 @@
                             android:layout_width="353dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/suggestTitle0"
-                            android:paddingLeft="10dp"
                             android:paddingTop="5dp"
-                            android:paddingStart="10dp"
-                            android:paddingEnd="10dp"
+                            android:paddingStart="35dp"
+                            android:paddingEnd="5dp"
                             android:paddingBottom="5dp"
                             android:text="TextView"
                             android:textSize="16sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+
+                            />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -101,7 +103,8 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -123,10 +126,9 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle1"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
                                 android:textSize="16sp"
@@ -153,7 +155,9 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
+
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -175,10 +179,9 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle2"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
                                 android:textSize="16sp"
@@ -205,7 +208,8 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -227,10 +231,9 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle3"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
                                 android:textSize="16sp"
@@ -257,7 +260,8 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -279,10 +283,9 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle4"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
                                 android:textSize="16sp"
@@ -309,7 +312,8 @@
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
                         android:orientation="vertical"
-                        android:background="@color/purple_200"
+                        android:background="@drawable/border"
+                        android:padding="3dp"
                         >
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -331,10 +335,9 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle5"
-                                android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="10dp"
-                                android:paddingEnd="10dp"
+                                android:paddingStart="32dp"
+                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
                                 android:textSize="16sp"
@@ -349,15 +352,120 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView5"
-                    android:layout_marginStart="280dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_alignEnd="@id/cardView5"
+                    android:layout_marginTop="20dp"
                     android:text="Refresh" />
+
+                <TextView
+                    android:id="@+id/nutrientCheckup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/refreshButton"
+                    android:layout_alignStart="@id/Suggestion"
+                    android:text="Fact Check"
+                    android:textSize="23sp"/>
+
+                <Button
+                    android:id="@+id/calciumButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nutrientCheckup"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignStart="@id/nutrientCheckup"
+                    android:layout_alignBaseline="@id/magnesiumButton"
+                    android:text="Calcium"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/magnesiumButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nutrientCheckup"
+                    android:layout_toEndOf="@id/calciumButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Magnesium"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/potButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nutrientCheckup"
+                    android:layout_toEndOf="@id/magnesiumButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Potassium"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitAButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calciumButton"
+                    android:layout_alignStart="@id/calciumButton"
+                    android:layout_marginTop="10dp"
+                    android:text="Vitamin A"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitBButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calciumButton"
+                    android:layout_toEndOf="@id/vitAButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Vitamin B12"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitCButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calciumButton"
+                    android:layout_toEndOf="@id/vitBButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Vitamin C"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitDButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vitAButton"
+                    android:layout_alignStart="@id/calciumButton"
+                    android:layout_marginTop="10dp"
+                    android:text="Vitamin D"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitEButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vitAButton"
+                    android:layout_toEndOf="@id/vitDButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Vitamin E"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/vitKButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vitAButton"
+                    android:layout_toEndOf="@id/vitEButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Vitamin K"
+                    android:textSize="12sp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:layout_below="@id/refreshButton">
+                    android:layout_below="@id/vitKButton">
                 </LinearLayout>
 
 

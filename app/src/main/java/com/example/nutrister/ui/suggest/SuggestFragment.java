@@ -57,6 +57,19 @@ public class SuggestFragment extends Fragment {
 
         mRefresh = root.findViewById(R.id.refreshButton);
 
+        title0.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title0.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        title1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title1.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        title2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title2.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        title3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title3.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        title4.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title4.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        title5.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
+        title5.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+
         //Retrieve Data
         DocumentReference documentReference = fStore.collection("user_advice").document(userID);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

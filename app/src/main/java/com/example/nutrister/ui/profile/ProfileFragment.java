@@ -40,6 +40,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -193,7 +194,7 @@ public class ProfileFragment extends Fragment {
         });
 
         CollectionReference weightRef = fStore.collection("users").document(userID).collection("weight_history");
-        weightRef.orderBy("timestamp", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        weightRef.orderBy("timestamp", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -203,6 +204,7 @@ public class ProfileFragment extends Fragment {
                         Log.d("", "Date is " + historyDate.get(0));
                         historyWeight.add(Float.parseFloat(document.getString("weight")));
                     }
+                    Collections.reverse(historyDate);
                     future.complete(null);
                 } else {
                     Log.d("", "Error getting documents: ", task.getException());
