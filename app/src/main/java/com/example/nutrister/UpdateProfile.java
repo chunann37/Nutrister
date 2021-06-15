@@ -114,6 +114,7 @@ public class UpdateProfile extends AppCompatActivity {
                 bmiCalculator.calculateBMI(weightValue, heightValue);
                 String bmiValue = bmiCalculator.BMIvalue;
                 String bmiStatus = bmiCalculator.result;
+                String bmiAdvice = bmiCalculator.weightAdvice;
 
                 bSmoke = findViewById(mSmoke.getCheckedRadioButtonId());
                 bPressure = findViewById(mPressure.getCheckedRadioButtonId());
@@ -129,7 +130,7 @@ public class UpdateProfile extends AppCompatActivity {
 
                 //calculate user BMR
                 BMRCalculator bmrCalculator = new BMRCalculator();
-                bmrCalculator.calculateBMR(weightValue, heightValue, age, gender, exercise);
+                bmrCalculator.basicBMR(weightValue, heightValue, age, gender, exercise,bmiStatus);
                 String bmrValue = bmrCalculator.BMRvalue;
 
                 //calculate user health index
@@ -151,6 +152,7 @@ public class UpdateProfile extends AppCompatActivity {
                 user.put("heightValue", heightValue);
                 user.put("bmiValue",bmiValue);
                 user.put("bmiStatus",bmiStatus);
+                user.put("bmiAdvice",bmiAdvice);
                 user.put("exercise", exercise);
                 user.put("smoke", smoke);
                 user.put("drink", drink);

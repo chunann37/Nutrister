@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/honeydew"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <ScrollView
@@ -20,7 +22,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/profileBackground"
+                    android:layout_width="380dp"
+                    android:layout_height="275dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/light_blue_background"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/profileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -28,7 +40,9 @@
                     android:layout_marginTop="30dp"
                     android:text="Name"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/personal_information_24"
+                    android:drawablePadding="2dp"/>
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -39,7 +53,7 @@
                     android:layout_marginTop="20dp"
                     tools:src="@tools:sample/avatars" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -48,7 +62,8 @@
                     android:text="Current Status"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/weight"
@@ -83,16 +98,6 @@
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/BMR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/BMI"
-                    android:layout_alignStart="@id/status"
-                    android:layout_marginTop="15dp"
-                    android:text="BMR"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/profileWeight"
@@ -129,37 +134,26 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/weightStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/BMI"
+                    android:layout_alignStart="@id/BMI"
+                    android:layout_marginTop="15dp"
+                    android:text="Status"
+                    android:textSize="18sp"/>
+
+                <TextView
                     android:id="@+id/profileBMIstatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/BMI"
-                    android:layout_marginStart="5dp"
-                    android:layout_toEndOf="@id/profileBMI"
-                    android:text="Your BMI"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/profileBMR"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/BMR"
+                    android:layout_below="@id/profileBMI"
+                    android:layout_alignBaseline="@id/weightStatus"
                     android:layout_alignStart="@id/profileBMI"
-                    android:text="Your BMR"
+                    android:text="BMI status"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/calories"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@id/profileBMR"
-                    android:layout_toEndOf="@id/profileBMR"
-                    android:layout_marginStart="3dp"
-                    android:text="@string/calories_day"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/kg"
@@ -181,22 +175,30 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/updateBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/profileBMR"
+                    android:layout_alignBaseline="@id/logoutButton"
                     android:layout_marginTop="15dp"
-                    android:layout_alignStart="@id/profileBMR"
+                    android:layout_alignStart="@id/profileBMIstatus"
+                    app:strokeColor="@color/gray"
+                    android:backgroundTint="@color/orange"
+                    android:textColor="@color/white"
                     android:text="Update" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/logoutButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/imageView"
                     android:layout_marginStart="50dp"
                     android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/dark_orange"
+                    app:strokeColor="@color/gray"
+                    android:textColor="@color/white"
                     android:text="@string/logout" />
 
                 <TextView
@@ -204,18 +206,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/logoutButton"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="22dp"
                     android:text="Weight Trend"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineChart"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:layout_below="@id/lineChartTitle"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@color/milk"/>
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"

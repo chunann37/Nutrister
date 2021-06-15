@@ -43,7 +43,7 @@ public class Questionnaire extends AppCompatActivity {
     RadioButton bSmoke, bPressure, bSugar, bCholesterol;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID, username, gender, age, weightValue, heightValue, bmiValue, bmiStatus;
+    String userID, username, gender, age, weightValue, heightValue, bmiValue, bmiStatus, bmiAdvice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class Questionnaire extends AppCompatActivity {
         heightValue = intent.getStringExtra("heightValue");
         bmiValue = intent.getStringExtra("bmiValue");
         bmiStatus = intent.getStringExtra("bmiStatus");
+        bmiAdvice = intent.getStringExtra("bmiAdvice");
 
         //Exercise dropdown list
         mExercise = findViewById(R.id.exerciseSpinner);
@@ -112,7 +113,7 @@ public class Questionnaire extends AppCompatActivity {
 
         //calculate user BMR
         BMRCalculator bmrCalculator = new BMRCalculator();
-        bmrCalculator.calculateBMR(weightValue, heightValue, age, gender, exercise);
+        bmrCalculator.basicBMR(weightValue, heightValue, age, gender, exercise, bmiStatus);
         String bmrValue = bmrCalculator.BMRvalue;
 
         //calculate user health index
@@ -141,6 +142,7 @@ public class Questionnaire extends AppCompatActivity {
         user.put("heightValue", heightValue);
         user.put("bmiValue",bmiValue);
         user.put("bmiStatus",bmiStatus);
+        user.put("bmiAdvice",bmiAdvice);
         user.put("exercise", exercise);
         user.put("smoke", smoke);
         user.put("drink", drink);

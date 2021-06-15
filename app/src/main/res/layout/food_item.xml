@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/honeydew">
 
         <TextView
             android:id="@+id/foodLabel_item"
@@ -34,16 +35,17 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/foodEnergy_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
-            android:layout_marginLeft="260dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingRight="15dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="15dp"
+            android:gravity="end"
             android:text="Calories"
             android:textColor="@color/black"
             android:textSize="18sp" />

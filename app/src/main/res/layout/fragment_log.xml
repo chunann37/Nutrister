@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/honeydew"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
 
@@ -20,16 +22,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/breakfastBg"
+                    android:layout_width="410dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/breakfastTitle"
+                    android:layout_alignBottom="@id/addBreakfast"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/light_blue_background"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/breakfastTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:text="BreakFast"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/breakfast_24"
+                    android:drawablePadding="8dp"/>
 
 
                 <androidx.cardview.widget.CardView
@@ -39,8 +53,8 @@
                     android:layout_below="@id/breakfastTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/tiffany_blue">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -76,8 +90,7 @@
                             android:id="@+id/foodEnergy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="260dp"
-                            android:layout_marginLeft="260dp"
+                            android:layout_marginStart="300dp"
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
                             android:text="Calories"
@@ -88,37 +101,53 @@
                             android:id="@+id/breakfastView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
                             android:layout_below="@id/foodName"
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/milk"
                             android:scrollbars="vertical" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/addBreakfast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/breakfastCard"
-                    android:layout_alignRight="@id/breakfastCard"
                     android:layout_alignEnd="@id/breakfastCard"
-                    android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:drawableLeft="@drawable/ic_add_24"
-                    android:drawableTint="@color/white"
-                    android:text="Add" />
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:icon="@drawable/ic_add_24"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="6dp"
+                    android:textColor="@color/white"
+                    android:text="Add"
+                    android:textStyle="bold"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/lunchBg"
+                    android:layout_width="410dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@id/lunchTitle"
+                    android:layout_alignBottom="@id/addLunch"
+                    android:background="@drawable/light_blue_background"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/lunchTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/addBreakfast"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@id/addBreakfast"
                     android:text="Lunch"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/lunch_24"
+                    android:drawablePadding="8dp"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/lunchCard"
@@ -128,7 +157,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/tiffany_blue">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -164,8 +194,7 @@
                             android:id="@+id/foodEnergy2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="260dp"
-                            android:layout_marginLeft="260dp"
+                            android:layout_marginStart="300dp"
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
                             android:text="Calories"
@@ -176,37 +205,54 @@
                             android:id="@+id/lunchView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
                             android:layout_below="@id/foodName2"
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/milk"
                             android:scrollbars="vertical" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/addLunch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/lunchCard"
-                    android:layout_alignRight="@id/lunchCard"
                     android:layout_alignEnd="@id/lunchCard"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:drawableLeft="@drawable/ic_add_24"
-                    android:drawableTint="@color/white"
-                    android:text="Add" />
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:icon="@drawable/ic_add_24"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="6dp"
+                    android:textColor="@color/white"
+                    android:text="Add"
+                    android:textStyle="bold"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/dinnerBg"
+                    android:layout_width="410dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@id/dinnerTitle"
+                    android:layout_alignBottom="@id/addDinner"
+                    android:background="@drawable/light_blue_background"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/dinnerTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/addLunch"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@id/addLunch"
                     android:text="Dinner"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/dinner_24"
+                    android:drawablePadding="8dp"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/dinnerCard"
@@ -216,7 +262,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/tiffany_blue">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -252,8 +299,7 @@
                             android:id="@+id/foodEnergy3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="260dp"
-                            android:layout_marginLeft="260dp"
+                            android:layout_marginStart="300dp"
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
                             android:text="Calories"
@@ -264,37 +310,54 @@
                             android:id="@+id/dinnerView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
                             android:layout_below="@id/foodName3"
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/milk"
                             android:scrollbars="vertical" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/addDinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/dinnerCard"
-                    android:layout_alignRight="@id/dinnerCard"
                     android:layout_alignEnd="@+id/dinnerCard"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:drawableLeft="@drawable/ic_add_24"
-                    android:drawableTint="@color/white"
-                    android:text="Add" />
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:icon="@drawable/ic_add_24"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="6dp"
+                    android:textColor="@color/white"
+                    android:text="Add"
+                    android:textStyle="bold"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/snackBg"
+                    android:layout_width="410dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignTop="@id/snackTitle"
+                    android:layout_alignBottom="@id/addSnack"
+                    android:background="@drawable/light_blue_background"
+                    android:orientation="horizontal" />
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/snackTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/addDinner"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_below="@id/addDinner"
                     android:text="Snack"
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/snack_24"
+                    android:drawablePadding="8dp"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/snackCard"
@@ -304,7 +367,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/tiffany_blue">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -340,8 +404,7 @@
                             android:id="@+id/foodEnergy4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="260dp"
-                            android:layout_marginLeft="260dp"
+                            android:layout_marginStart="300dp"
                             android:paddingTop="2dp"
                             android:paddingBottom="2dp"
                             android:text="Calories"
@@ -352,31 +415,34 @@
                             android:id="@+id/snackView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_centerHorizontal="true"
                             android:layout_below="@id/foodName4"
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/milk"
                             android:scrollbars="vertical" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/addSnack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/snackCard"
-                    android:layout_alignRight="@+id/snackCard"
                     android:layout_alignEnd="@+id/snackCard"
                     android:layout_marginTop="0dp"
                     android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:drawableLeft="@drawable/ic_add_24"
-                    android:drawableTint="@color/white"
-                    android:text="Add" />
+                    style="@style/Widget.MaterialComponents.Button"
+                    app:icon="@drawable/ic_add_24"
+                    app:iconTint="@color/white"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="6dp"
+                    android:textColor="@color/white"
+                    android:text="Add"
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:layout_below="@id/addSnack">
-                </LinearLayout>
+                    android:layout_below="@id/addSnack"></LinearLayout>
 
             </RelativeLayout>
         </LinearLayout>

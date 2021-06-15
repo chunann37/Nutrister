@@ -15,7 +15,7 @@
         <item name="android:textColorPrimary">@color/text_color_primary</item>
         <item name="android:textColor">@color/text_color_primary</item>
         <!-- Customize your font here. -->
-        <item name="android:textViewStyle">@font/droid_serif</item>
-        <item name="android:buttonStyle">@font/droid_serif</item>
+        <item name="fontFamily">@font/proxima_nova</item>
+
     </style>
 </resources>

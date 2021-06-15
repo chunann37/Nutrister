@@ -2,11 +2,11 @@ package com.example.nutrister.utils;
 
 public class BMRCalculator {
     public String BMRvalue;
-    public double result;
+    public double basicValue, recommendValue;
     public double bmr;
 
 
-    public void calculateBMR(String weight, String height, String age, String gender, String exercise) {
+    public void basicBMR(String weight, String height, String age, String gender, String exercise, String bmiStatus) {
         if (height != null && !"".equals(height)
                 && weight != null && !"".equals(weight)) {
             double heightValue = Double.parseDouble(height);
@@ -20,20 +20,49 @@ public class BMRCalculator {
             }
 
             if (exercise.equals("little or no exercise")) {
-                result = (bmr * 1.2);
+                basicValue = (bmr * 1.2);
             } else if (exercise.equals("light exercise or sports 1-3 days/week")) {
-                result = (bmr * 1.375);
+                basicValue = (bmr * 1.375);
             } else if (exercise.equals("moderate exercise 3-5 days/week")) {
-                result = (bmr * 1.55);
+                basicValue = (bmr * 1.55);
             } else if (exercise.equals("hard exercise 6-7 days/week")) {
-                result = (bmr * 1.725);
+                basicValue = (bmr * 1.725);
             } else {
-                result = (bmr * 1.9);
+                basicValue = (bmr * 1.9);
             }
-            double roundedResult = Math.round(result);
+            double roundedResult = Math.round(basicValue);
             int intResult = (int) roundedResult;
-            BMRvalue = String.valueOf(intResult);
+            recommendBMR(bmiStatus, intResult);
         }
+    }
+
+    public void recommendBMR(String bmiStatus, int bmrValue) {
+        int deductValue;
+        switch (bmiStatus) {
+            case "Underweight":
+                deductValue = 300;
+                recommendValue = bmrValue + deductValue;
+                break;
+
+            case "Normal":
+                recommendValue = bmrValue;
+                break;
+
+            case "Overweight":
+                deductValue = 300;
+                recommendValue = bmrValue - deductValue;
+                break;
+
+            case "Obese":
+                deductValue = 500;
+                recommendValue = bmrValue - deductValue;
+                break;
+
+        }
+        double roundedResult = Math.round(recommendValue);
+        int intResult = (int) roundedResult;
+        BMRvalue = String.valueOf(intResult);
+
     }
 }
 

@@ -71,7 +71,6 @@ public class ProfileFragment extends Fragment {
         weight = view.findViewById(R.id.profileWeight);
         height = view.findViewById(R.id.profileHeight);
         bmi = view.findViewById(R.id.profileBMI);
-        bmr = view.findViewById(R.id.profileBMR);
         bmiStatus = view.findViewById(R.id.profileBMIstatus);
         profileBtn = view.findViewById(R.id.updateBtn);
         logoutBtn = view.findViewById(R.id.logoutButton);
@@ -151,10 +150,11 @@ public class ProfileFragment extends Fragment {
         xAxis.setDrawGridLines(false);
         xAxis.setTextSize(14f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(Color.parseColor("#A9A9A9"));
         YAxis leftYAxis = lineChart.getAxisLeft();
         leftYAxis.setTextSize(14f);
         leftYAxis.setLabelCount(4);
-
+        leftYAxis.setTextColor(Color.parseColor("#A9A9A9"));
         lineDataSet.setLineWidth(4f);
         //String setter in x-Axis
         lineChart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
@@ -180,14 +180,22 @@ public class ProfileFragment extends Fragment {
                 height.setText(documentSnapshot.getString("heightValue"));
                 bmi.setText(documentSnapshot.getString("bmiValue"));
                 bmiStatus.setText(documentSnapshot.getString("bmiStatus"));
-                bmr.setText(documentSnapshot.getString("bmrValue"));
                 gender = documentSnapshot.getString("gender");
 
                 if(gender.equals("Male")){
-
                     profileImage.setImageResource(R.drawable.profile_male);
                 } else {
                     profileImage.setImageResource(R.drawable.profile_female);
+                }
+
+                if (bmiStatus.getText().toString().contains("Underweight")){
+                    bmiStatus.setTextColor(Color.parseColor("#FB8500"));
+                } else if (bmiStatus.getText().toString().contains("Normal")){
+                    bmiStatus.setTextColor(Color.parseColor("#06d6a0"));
+                } else if (bmiStatus.getText().toString().contains("Overweight")){
+                    bmiStatus.setTextColor(Color.parseColor("#FB8500"));
+                } else {
+                    bmiStatus.setTextColor(Color.parseColor("#d00000"));
                 }
 
             }
@@ -214,5 +222,6 @@ public class ProfileFragment extends Fragment {
 
         });
     }
+
 
 }

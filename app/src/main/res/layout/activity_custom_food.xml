@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/honeydew"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".CustomFood">
     <ScrollView
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/customFoodTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -27,22 +28,25 @@
                     android:layout_centerHorizontal="true"
                     android:text="Add your own food"
                     android:textSize="25sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/writing_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/foodNameTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customFoodTitle"
                     android:layout_alignBaseline="@id/foodNameInput"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="46dp"
                     android:labelFor="@id/foodNameInput"
                     android:text="Food Name: "
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/foodname_24"
+                    android:drawablePadding="8dp"
+                    />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/mealCatalog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -51,9 +55,10 @@
                     android:layout_alignStart="@id/foodNameTitle"
                     android:text="Meal: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/meal_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/foodServingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -62,9 +67,10 @@
                     android:layout_alignTop="@id/servingSpinner"
                     android:text="Serving: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/serves_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/energy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,9 +80,10 @@
                     android:labelFor="@id/energyInput"
                     android:text="Energy: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/energy_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/carbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,9 +93,11 @@
                     android:labelFor="@id/carbsInput"
                     android:text="Carbs: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/carbs_24"
+                    android:drawablePadding="8dp"
+                    />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/protein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,9 +107,10 @@
                     android:labelFor="@id/proteinInput"
                     android:text="Protein: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/proteins_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,9 +120,10 @@
                     android:labelFor="@id/fatInput"
                     android:text="Fat: "
                     android:textSize="20sp"
-                    android:textColor="@color/black" />
+                    app:drawableLeftCompat="@drawable/fat_24"
+                    android:drawablePadding="8dp"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fiber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,7 +133,8 @@
                     android:labelFor="@id/fiberInput"
                     android:text="Fiber: "
                     android:textSize="20sp"
-                    android:textColor="@color/black"/>
+                    app:drawableLeftCompat="@drawable/fiber_24"
+                    android:drawablePadding="8dp"/>
 
                 <EditText
                     android:id="@+id/foodNameInput"

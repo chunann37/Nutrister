@@ -22,6 +22,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SuggestFragment extends Fragment {
+    private TextView weightAdvice, bmrValue;
     private TextView title0, title1, title2, title3, title4, title5;
     private TextView advice0, advice1, advice2, advice3, advice4, advice5;
     private FirebaseAuth fAuth;
@@ -41,6 +42,9 @@ public class SuggestFragment extends Fragment {
         fStore = FirebaseFirestore.getInstance();
         userID = fAuth.getCurrentUser().getUid();
 
+        weightAdvice = root.findViewById(R.id.weightSuggestion);
+        bmrValue = root.findViewById(R.id.bmrValue);
+
         title0 = root.findViewById(R.id.suggestTitle0);
         title1 = root.findViewById(R.id.suggestTitle1);
         title2 = root.findViewById(R.id.suggestTitle2);
@@ -57,37 +61,37 @@ public class SuggestFragment extends Fragment {
 
         mRefresh = root.findViewById(R.id.refreshButton);
 
-        title0.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title0.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-        title1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title1.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-        title2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title2.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-        title3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title3.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-        title4.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title4.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-        title5.setCompoundDrawablesWithIntrinsicBounds(R.drawable.to_do_list,0,0,0);
-        title5.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
-
         //Retrieve Data
         DocumentReference documentReference = fStore.collection("user_advice").document(userID);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 title0.setText(documentSnapshot.getString("title0"));
+                decideIcon(title0);
                 advice0.setText(documentSnapshot.getString("advice0"));
                 title1.setText(documentSnapshot.getString("title1"));
+                decideIcon(title1);
                 advice1.setText(documentSnapshot.getString("advice1"));
                 title2.setText(documentSnapshot.getString("title2"));
+                decideIcon(title2);
                 advice2.setText(documentSnapshot.getString("advice2"));
                 title3.setText(documentSnapshot.getString("title3"));
+                decideIcon(title3);
                 advice3.setText(documentSnapshot.getString("advice3"));
                 title4.setText(documentSnapshot.getString("title4"));
+                decideIcon(title4);
                 advice4.setText(documentSnapshot.getString("advice4"));
                 title5.setText(documentSnapshot.getString("title5"));
+                decideIcon(title5);
                 advice5.setText(documentSnapshot.getString("advice5"));
-
+            }
+        });
+        DocumentReference weightAdviceRef = fStore.collection("users").document(userID);
+        weightAdviceRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                weightAdvice.setText(documentSnapshot.getString("bmiAdvice"));
+                bmrValue.setText(documentSnapshot.getString("bmrValue"));
             }
         });
 
@@ -134,5 +138,30 @@ public class SuggestFragment extends Fragment {
 
 
         return root;
+    }
+    //create icon
+    private void decideIcon(TextView title) {
+        if (title.getText().toString().contains("Alcohol")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.whiskey_24,0,0,0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else if (title.getText().toString().contains("Exercise")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.jogging_24, 0, 0, 0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else if (title.getText().toString().contains("Smoking")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tobacco_24, 0, 0, 0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else if (title.getText().toString().contains("Blood Sugar")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.sugar_24, 0, 0, 0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else if (title.getText().toString().contains("Blood Pressure")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.pressure_24, 0, 0, 0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else if (title.getText().toString().contains("Cholesterol")) {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.cholesterol_24,0,0,0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        } else {
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.healthcare_24,0,0,0);
+            title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
+        }
     }
 }

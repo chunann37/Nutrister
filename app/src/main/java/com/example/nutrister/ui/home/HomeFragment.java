@@ -1,5 +1,6 @@
 package com.example.nutrister.ui.home;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -91,7 +92,12 @@ public class HomeFragment extends Fragment {
                 String showEnergy = String.valueOf(totalEnergy);
                 textEnergy.setText(showEnergy);
                 progBar.setMax(bmrValue);
-                progBar.setProgress(totalEnergy);
+                if (totalEnergy>bmrValue){
+                    progBar.setProgress(bmrValue);
+                    progBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#FF0000")));
+                } else {
+                    progBar.setProgress(totalEnergy);
+                }
 
                 amount[0] = documentSnapshot.getLong("totalCarbs").intValue();
                 amount[1] = documentSnapshot.getLong("totalProtein").intValue();
@@ -117,6 +123,7 @@ public class HomeFragment extends Fragment {
     private void setupPieChart(){
         pieChart.setDrawHoleEnabled(true);
         pieChart.setUsePercentValues(true);
+        pieChart.setHoleColor(Color.parseColor("#F1FAEE"));
         pieChart.setEntryLabelTextSize(14f);
         pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setCenterText("Nutrients");
@@ -130,7 +137,7 @@ public class HomeFragment extends Fragment {
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         legend.setDrawInside(false);
-        legend.setEnabled(true);
+        legend.setEnabled(false);
         legend.setWordWrapEnabled(true);
 
     }
@@ -152,12 +159,13 @@ public class HomeFragment extends Fragment {
         data.setValueTextSize(20f);
         data.setValueTextColor(Color.BLACK);
         data.setValueFormatter(new CustomPercentFormatter());
-
         pieChart.setData(data);
         pieChart.invalidate();
         pieChart.setDrawEntryLabels(false);
         pieChart.getData().setDrawValues(true);
         pieChart.animateY(1400, Easing.EaseInOutQuad);
+
+
     }
 
 
