@@ -272,7 +272,7 @@ public class ProfileFragment extends Fragment {
 
     private void setupCaloriesLineChart() {
         LineDataSet lineDataSet = new LineDataSet(dataValsCalories, "Calories Tracking");
-        lineDataSet.setColor(Color.parseColor("#B7E9F7"));
+        lineDataSet.setColor(Color.parseColor("#f7c5b7"));
         lineDataSet.setValueTextSize(20f);
         lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();

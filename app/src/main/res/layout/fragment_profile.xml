@@ -201,17 +201,18 @@
                     android:textColor="@color/white"
                     android:text="@string/logout" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/CaloriesChartTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/logoutButton"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginStart="22dp"
                     android:text="Calories History"
                     android:textSize="23sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/calorieshistory_24"
+                    android:drawablePadding="5dp"/>
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/CaloriesLineChart"
@@ -221,7 +222,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/milk"/>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/WeightChartTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -230,8 +231,10 @@
                     android:layout_marginStart="22dp"
                     android:text="Weight History"
                     android:textSize="23sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/weighthistory_24"
+                    android:drawablePadding="5dp"
+                    />
 
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/WeightLineChart"
