@@ -69,6 +69,7 @@ public class SetupProfile extends AppCompatActivity {
         bmiCalculator.calculateBMI(weightValue, heightValue);
         String bmiValue = bmiCalculator.BMIvalue;
         String bmiStatus = bmiCalculator.result;
+        String bmiAdvice = bmiCalculator.weightAdvice;
 
         //collect profile information
         UserInformation userinformation = new UserInformation();
@@ -82,6 +83,7 @@ public class SetupProfile extends AppCompatActivity {
         intent.putExtra("heightValue", heightValue);
         intent.putExtra("bmiValue", bmiValue);
         intent.putExtra("bmiStatus", bmiStatus);
+        intent.putExtra("bmiAdvice", bmiAdvice);
 
         startActivity(intent);
     }
@@ -132,7 +134,7 @@ public class SetupProfile extends AppCompatActivity {
         if (TextUtils.isEmpty(weight)) {
             mWeight.setError("Please enter your weight");
             return false;
-        } else if (Integer.parseInt(weight) < 3 || Integer.parseInt(weight) > 150) {
+        } else if (Integer.parseInt(weight) < 3 || Integer.parseInt(weight) > 200) {
             mWeight.setError("Please enter valid weight");
             return false;
         } else {

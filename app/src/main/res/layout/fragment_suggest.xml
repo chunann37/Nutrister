@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
+    android:background="@color/honeydew"
+    tools:context=".ui.suggest.SuggestFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,67 +22,144 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/Suggestion"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weightTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/suggestion_for_you"
-                    android:textColor="@color/black"
-                    android:textSize="23sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="15dp"
+                    android:text="Weight Control"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    app:drawableLeftCompat="@drawable/body_scale_24"
+                    android:drawablePadding="8dp"/>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView0"
+                    android:id="@+id/weightCard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/Suggestion"
+                    android:layout_below="@id/weightTitle"
                     android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginTop="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
-                        android:padding="3dp"
-                        >
+                        android:orientation="vertical"
+                        android:padding="3dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/suggestTitle0"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="5dp"
-                            android:text="TextView"
-                            android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            <TextView
+                                android:id="@+id/weightSuggestion"
+                                android:layout_width="353dp"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingEnd="5dp"
+                                android:paddingBottom="5dp"
+                                android:text="Weight Advice"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
 
-                        <TextView
-                            android:id="@+id/suggestAdvice0"
-                            android:layout_width="353dp"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/suggestTitle0"
-                            android:paddingTop="5dp"
-                            android:paddingStart="35dp"
-                            android:paddingEnd="5dp"
-                            android:paddingBottom="5dp"
-                            android:text="TextView"
-                            android:textSize="16sp"
-                            android:textColor="@color/black"
+                            <TextView
+                                android:id="@+id/bmrSuggestion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/weightSuggestion"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="5dp"
+                                android:text="Recommended calories intake:"
+                                android:textSize="16sp" />
 
-                            />
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/bmrValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignBaseline="@id/bmrSuggestion"
+                                android:layout_toEndOf="@id/bmrSuggestion"
+                                android:paddingStart="5dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="0dp"
+                                android:text="bmrValue"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                app:drawableRightCompat="@drawable/kcal_24"
+                                android:drawablePadding="5dp"/>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/healthTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/weightCard"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Suggestion"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    app:drawableLeftCompat="@drawable/idea_24"
+                    android:drawablePadding="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/healthTitle"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/border"
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/suggestTitle0"
+                                android:layout_width="353dp"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:text="TextView"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:gravity="bottom"/>
+
+                            <TextView
+                                android:id="@+id/suggestAdvice0"
+                                android:layout_width="353dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/suggestTitle0"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:text="TextView"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:justificationMode="inter_word"
+                                />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -99,24 +178,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
-                        android:padding="3dp"
-                        >
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
                                 android:id="@+id/suggestTitle1"
-                                android:layout_width="wrap_content"
+                                android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
                                 android:text="TextView"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
@@ -126,13 +207,14 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle1"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="32dp"
-                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
+                                android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textColor="@color/black"/>
+                                android:justificationMode="inter_word"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -151,25 +233,28 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
+                        android:orientation="vertical"
                         android:padding="3dp"
 
                         >
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
                                 android:id="@+id/suggestTitle2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
                                 android:text="TextView"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
@@ -179,13 +264,14 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle2"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="32dp"
-                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
+                                android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textColor="@color/black"/>
+                                android:justificationMode="inter_word"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -204,24 +290,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
-                        android:padding="3dp"
-                        >
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
                                 android:id="@+id/suggestTitle3"
-                                android:layout_width="wrap_content"
+                                android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
                                 android:text="TextView"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
@@ -231,13 +319,14 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle3"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="32dp"
-                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
+                                android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textColor="@color/black"/>
+                                android:justificationMode="inter_word"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -256,24 +345,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
-                        android:padding="3dp"
-                        >
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
                                 android:id="@+id/suggestTitle4"
-                                android:layout_width="wrap_content"
+                                android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
                                 android:text="TextView"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
@@ -283,13 +374,14 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle4"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="32dp"
-                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
+                                android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textColor="@color/black"/>
+                                android:justificationMode="inter_word"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -308,24 +400,26 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0dp"
                         android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
-                        android:orientation="vertical"
                         android:background="@drawable/border"
-                        android:padding="3dp"
-                        >
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
                             <TextView
                                 android:id="@+id/suggestTitle5"
-                                android:layout_width="wrap_content"
+                                android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
                                 android:text="TextView"
                                 android:textColor="@color/black"
                                 android:textSize="20sp" />
@@ -335,13 +429,14 @@
                                 android:layout_width="353dp"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle5"
+                                android:paddingStart="8dp"
+                                android:paddingEnd="8dp"
                                 android:paddingTop="5dp"
-                                android:paddingStart="32dp"
-                                android:paddingEnd="5dp"
                                 android:paddingBottom="5dp"
                                 android:text="TextView"
+                                android:textColor="@color/black"
                                 android:textSize="16sp"
-                                android:textColor="@color/black"/>
+                                android:justificationMode="inter_word"/>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -356,47 +451,104 @@
                     android:layout_marginTop="20dp"
                     android:text="Refresh" />
 
-                <TextView
-                    android:id="@+id/nutrientCheckup"
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/diseaseTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/refreshButton"
-                    android:layout_alignStart="@id/Suggestion"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Potential diseases"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    app:drawableLeftCompat="@drawable/disease_24"
+                    android:drawablePadding="8dp"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/diseaseCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diseaseTitle"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/purple_500">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/border"
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/diseaseList"
+                                android:layout_width="353dp"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
+                                android:text="None from acknowledgement"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/checkupTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_below="@id/diseaseCard"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
                     android:text="Fact Check"
-                    android:textSize="23sp"/>
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/factcheck_24"
+                    android:drawablePadding="8dp"/>
 
                 <Button
                     android:id="@+id/calciumButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nutrientCheckup"
+                    android:layout_below="@id/checkupTitle"
+                    android:layout_alignStart="@id/checkupTitle"
                     android:layout_marginTop="10dp"
-                    android:layout_alignStart="@id/nutrientCheckup"
-                    android:layout_alignBaseline="@id/magnesiumButton"
                     android:text="Calcium"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/magnesiumButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nutrientCheckup"
-                    android:layout_toEndOf="@id/calciumButton"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/calciumButton"
+                    android:layout_alignBaseline="@id/calciumButton"
                     android:text="Magnesium"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/potButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/nutrientCheckup"
-                    android:layout_toEndOf="@id/magnesiumButton"
-                    android:layout_marginTop="10dp"
+                    android:layout_alignBaseline="@id/calciumButton"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/magnesiumButton"
                     android:text="Potassium"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitAButton"
@@ -406,29 +558,29 @@
                     android:layout_alignStart="@id/calciumButton"
                     android:layout_marginTop="10dp"
                     android:text="Vitamin A"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitBButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/calciumButton"
-                    android:layout_toEndOf="@id/vitAButton"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/vitAButton"
                     android:text="Vitamin B12"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitCButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/calciumButton"
-                    android:layout_toEndOf="@id/vitBButton"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/vitBButton"
                     android:text="Vitamin C"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitDButton"
@@ -438,34 +590,37 @@
                     android:layout_alignStart="@id/calciumButton"
                     android:layout_marginTop="10dp"
                     android:text="Vitamin D"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitEButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/vitAButton"
-                    android:layout_toEndOf="@id/vitDButton"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/vitDButton"
                     android:text="Vitamin E"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/vitKButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/vitAButton"
-                    android:layout_toEndOf="@id/vitEButton"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@id/vitEButton"
                     android:text="Vitamin K"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp" />
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_below="@id/vitKButton">
+
                 </LinearLayout>
 
 

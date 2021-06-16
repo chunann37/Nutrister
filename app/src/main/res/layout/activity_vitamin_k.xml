@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/honeydew"
+    tools:context=".facts.VitaminK">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Benefits of Vitamin K"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/benefit_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitTitle"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Cognitive health"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Increased blood levels of vitamin K have been linked with improved episodic memory in older adults. In one study, healthy individuals over the age of 70 years with the highest blood levels of vitamin K1 had the highest verbal episodic memory performance."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Heart health"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Vitamin K may help keep blood pressure lower by preventing mineralization, where minerals build up in the arteries. This enables the heart to pump blood freely through the body. Mineralization naturally occurs with age, and it is a major risk factor for heart disease. Adequate intake of vitamin K has also been shown to lower the risk of stroke"
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="20dp"
+                    android:text="Good Vitamin K source:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/source_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sourceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_below="@id/source"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/vitamin_k_source"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

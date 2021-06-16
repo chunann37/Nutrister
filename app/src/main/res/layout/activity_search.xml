@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/honeydew"
     tools:context=".ui.search.SearchActivity">
 
     <ScrollView
@@ -21,118 +22,142 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Food information"
-                    android:textSize="30sp"
-                    android:layout_marginTop="10dp"
+                    android:textSize="25sp"
+                    android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/text_color_primary">
-                </TextView>
+                    app:drawableLeftCompat="@drawable/information_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
                     android:layout_marginTop="20dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/title"
                     tools:srcCompat="@tools:sample/avatars" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/foodLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/labelInput"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
                     android:text="Food Label"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/foodname_24"
+                    android:drawablePadding="8dp"
+                    >
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/categoryText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@+id/categoryInput"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Category"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/category_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/energy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/categoryText"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Energy"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/energy_24"
+                    android:drawablePadding="8dp">
 
-                </TextView>
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/carbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/energy"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Carbs"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/carbs_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/protein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/carbs"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Protein"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/proteins_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/protein"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Fat"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/fat_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fiber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/fat"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:layout_marginTop="15dp"
                     android:text="Fiber"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/fiber_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fiber"
+                    android:layout_alignStart="@id/foodLabel"
+                    android:layout_marginTop="15dp"
+                    android:text="Weight"
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/weight_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
+
+                <TextView
+                    android:id="@+id/weightInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/weight"
+                    android:layout_marginStart="180dp"
+                    android:text="weight"
+                    android:textSize="18sp">
+                </TextView>
 
                 <TextView
                     android:id="@+id/categoryInput"
@@ -278,37 +303,50 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/weightUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/weightInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/weightInput"
+                    android:layout_toRightOf="@id/weightInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/mealCatalog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/fiber"
+                    android:layout_below="@id/weight"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:text="Meal"
-                    android:textSize="18sp"
-                    android:textColor="@color/black">
-                </TextView>
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/meal_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
 
                 <Spinner
                     android:id="@+id/mealSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/fiberInput"
+                    android:layout_below="@id/weightInput"
                     android:layout_marginTop="25dp"
-                    android:layout_alignLeft="@id/fiberInput"
-                    android:layout_alignStart="@id/fiberInput">
+                    android:layout_alignStart="@id/weightInput">
                 </Spinner>
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/servingSize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/mealCatalog"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_alignStart="@id/foodLabel"
                     android:text="Serving Size"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/serves_24"
+                    android:drawablePadding="8dp"/>
 
                 <Spinner
                     android:id="@+id/servingSpinner"
@@ -325,19 +363,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/servingSpinner"
-                    android:layout_marginLeft="240dp"
                     android:layout_marginStart="240dp"
+                    android:layout_alignBaseline="@id/customFoodBtn"
                     android:text="Add to Log"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:onClick="addFood"/>
 
                 <TextView
                     android:id="@+id/customFoodDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/addFood"
-                    android:layout_alignStart="@id/addFood"
-                    android:layout_marginTop="5dp"
+                    android:layout_below="@id/servingSize"
+                    android:layout_alignStart="@id/servingSize"
+                    android:layout_marginTop="25dp"
                     android:text="@string/custom_food_desc"/>
 
                 <Button

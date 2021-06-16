@@ -48,4 +48,137 @@
     <string name="search_food">Search food</string>
     <string name="custom_food_desc">Not what you want? Try</string>
 
+    <string name="calcium_source">
+        •	Yogurt\n
+        <br>•	Milk\n</br>
+        <br>•	Fortified dairy alternatives\n</br>
+        <br>•	Sardines and salmon\n</br>
+        <br>•	Cheese\n</br>
+        <br>•	Tofu\n</br>
+        <br>•	Green leafy vegetables\n</br>
+        <br>•	Fortified fruit juices\n</br>
+        <br>•	Nuts and seeds\n</br>
+        <br>•	Legumes and grains\n</br>
+        <br>•	Cornmeal and corn tortillas\n</br>
+    </string>
+
+    <string name="potassium_source">
+        •	Cooked spinach\n
+        <br>•	Cooked broccoli\n</br>
+        <br>•	Potatoes\n</br>
+        <br>•	Sweet potatoes\n</br>
+        <br>•	Mushrooms\n</br>
+        <br>•	Tuna\n</br>
+        <br>•	Halibuts\n</br>
+        <br>•	Cod\n</br>
+        <br>•	Pumpkins\n</br>
+        <br>•	Kidney beans\n</br>
+        <br>•	Soybeans\n</br>
+        <br>•	Whole-wheat bread and pasta\n</br>
+        <br>•	Nuts\n</br>
+        <br>•	Brown rice\n</br>
+    </string>
+
+    <string name="magnesium_source">
+        •	Almonds\n
+        <br>•	Spinach\n</br>
+        <br>•	Potatoes\n</br>
+        <br>•	Roasted cashews\n</br>
+        <br>•	Oil roasted peanuts\n</br>
+        <br>•	Soy milk\n</br>
+        <br>•	Cooked black beans\n</br>
+        <br>•	Cooked edamame beans\n</br>
+        <br>•	Peanut butter\n</br>
+        <br>•	Whole wheat bread\n</br>
+        <br>•	Avocado\n</br>
+        <br>•	Low fat yogurt\n</br>
+        <br>•	Fortified breakfast cereals\n</br>
+        <br>•	Brown rice\n</br>
+        <br>•	Oatmeal\n</br>
+        <br>•	Banana\n</br>
+    </string>
+
+    <string name="vitamin_a_source">
+        •	Organ meats, such as liver\n
+        <br>•	Fatty fish, such as tuna and herring\n</br>
+        <br>•	Milk and cheese\n</br>
+        <br>•	Eggs\n</br>
+        <br>•	Pumpkin\n</br>
+        <br>•	Carrots\n</br>
+        <br>•	Squash\n</br>
+        <br>•	Sweet potato\n</br>
+        <br>•	Red peppers\n</br>
+        <br>•	Cantaloupe\n</br>
+        <br>•	Apricot\n</br>
+        <br>•	Mango\n</br>
+        <br>•	Broccoli\n</br>
+        <br>•	Spinach\n</br>
+        <br>•	Turnip greens\n</br>
+    </string>
+
+    <string name="vitamin_b_source">
+        •	Beef\n
+        <br>•	Pork\n</br>
+        <br>•	Ham\n</br>
+        <br>•	Poultry\n</br>
+        <br>•	Lamb\n</br>
+        <br>•	Fish, especially haddock and tuna\n</br>
+        <br>•	Dairy products, such as milk, cheese, and yogurt\n</br>
+        <br>•	Nutritional yeast products\n</br>
+        <br>•	Eggs\n</br>
+    </string>
+
+    <string name="vitamin_c_source">
+        •	Red and green peppers\n
+        <br>•	Oranges and orange juice\n</br>
+        <br>•	Grapefruit\n</br>
+        <br>•	Kiwifruit\n</br>
+        <br>•	Strawberries\n</br>
+        <br>•	Spinach and other green, leafy vegetables\n</br>
+        <br>•	Tomatoes\n</br>
+        <br>•	Potatoes\n</br>
+        <br>•	Green peas\n</br>
+    </string>
+
+    <string name="vitamin_d_source">
+        •	Salmon\n
+        <br>•	Mackerel\n</br>
+        <br>•	Tuna\n</br>
+        <br>•	Egg yolks\n</br>
+        <br>•	Cheese\n</br>
+        <br>•	Beef liver\n</br>
+        <br>•	Mushrooms\n</br>
+        <br>•	Fortified milk\n</br>
+        <br>•	Fortified cereals and juices\n</br>
+    </string>
+
+    <string name="vitamin_e_source">
+        •	Seeds, such as sunflower or pumpkin seeds\n
+        <br>•	Vegetable oils, such as wheat germ, sunflower\n</br>
+        <br>•	Nuts, including almonds, walnuts\n</br>
+        <br>•	Nut butters\n</br>
+        <br>•	Green vegetables, such as spinach, broccoli\n</br>
+        <br>•	Avocados\n</br>
+        <br>•	Red bell peppers\n</br>
+        <br>•	Mangoes\n</br>
+        <br>•	Cereal\n</br>
+        <br>•	Fruit juices\n</br>
+        <br>•	Margarine\n</br>
+    </string>
+
+    <string name="vitamin_k_source">
+        •	Kale\n
+        <br>•	Mustard Greens\n</br>
+        <br>•	Swiss Chard\n</br>
+        <br>•	Collard Greens\n</br>
+        <br>•	Natto\n</br>
+        <br>•	Spinach\n</br>
+        <br>•	Brussels Sprouts\n</br>
+        <br>•	Beef Liver\n</br>
+        <br>•	Pork Chops\n</br>
+        <br>•	Chicken\n</br>
+        <br>•	Goose Liver paste\n</br>
+        <br>•	Green Beans\n</br>
+    </string>
+
 </resources>

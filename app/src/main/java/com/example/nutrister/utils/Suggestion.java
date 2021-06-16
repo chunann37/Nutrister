@@ -234,6 +234,7 @@ public class Suggestion {
                 Log.d("", "onFailure: " + e.toString());
             }
         });
+
     }
 
     private void getGeneralAdvice(CompletableFuture future) {

@@ -123,11 +123,13 @@ public class SearchFragment extends Fragment {
                             String roundedProtein = df.format(foods.getFood().getNutrients().getProcnt());
                             String roundedFat = df.format(foods.getFood().getNutrients().getFat());
                             String roundedFiber = df.format(foods.getFood().getNutrients().getFibtg());
+                            String roundedWeight = df.format(foods.getMeasure().getWeight());
                             intent.putExtra("energy", roundedEnergy);
                             intent.putExtra("carbs", roundedCarbs);
                             intent.putExtra("protein", roundedProtein);
                             intent.putExtra("fat", roundedFat);
                             intent.putExtra("fiber", roundedFiber);
+                            intent.putExtra("weight", roundedWeight);
 
                         }
                         startActivity(intent);

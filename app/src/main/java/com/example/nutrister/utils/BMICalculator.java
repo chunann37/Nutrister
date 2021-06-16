@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 public class BMICalculator {
     public String BMIvalue;
     public String result;
+    public String weightAdvice;
 
 
     public void calculateBMI(String weight, String height) {
@@ -27,15 +28,37 @@ public class BMICalculator {
         String bmiLabel = "";
 
         if (Float.compare(bmi, 18.5f) <= 0) {
-            bmiLabel = "underweight";
+            bmiLabel = "Underweight";
         } else if (Float.compare(bmi, 18.5f) > 0 && Float.compare(bmi, 25f) <= 0) {
-            bmiLabel = "normal";
+            bmiLabel = "Normal";
         } else if (Float.compare(bmi, 25f) > 0 && Float.compare(bmi, 30f) <= 0) {
-            bmiLabel = "overweight";
+            bmiLabel = "Overweight";
         } else {
-            bmiLabel = "obese";
+            bmiLabel = "Obese";
         }
         result = bmiLabel;
+        generateWeightAdvice(result);
     }
 
+    private void generateWeightAdvice(String bmiStatus){
+        switch (bmiStatus){
+            case "Underweight":
+                weightAdvice="Based on BMI status, you should increase calories intake to gain weight.";
+                break;
+
+            case "Normal":
+                weightAdvice="Based on BMI status, you should maintain calories intake to maintain healthy weight.";
+                break;
+
+            case "Overweight":
+                weightAdvice="Based on BMI status, you should decrease calories intake and exercise to lose weight.";
+                break;
+
+            case "Obese":
+                weightAdvice="Based on BMI status, you need to decrease calories intake and exercise regularly to lose weight.";
+                break;
+
+        }
+
+    }
 }

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/honeydew"
+    tools:context=".facts.VitaminC">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Benefits of Vitamin C"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/benefit_24"
+                    android:drawablePadding="8dp"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitTitle"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Wound healing"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Vitamin C helps the body produce collagen and is present in skin, muscle, and other tissues. People with a low intake of vitamin C may experience slower wound healing, as their bodies will be less able to produce collagen."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit4Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="2dp"
+                    android:text="Vitamin C may:"
+                    android:textSize="16sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="•	Have antioxidant properties\n•	Help widen the blood vessels\n•	Improve nitric oxide production\n•	Help reduce plaque instability in atherosclerosis"
+                    android:textSize="16sp"
+                   />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2Desc2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="This could help protect against heart disease and hypertension, or high blood pressure."
+                    android:textSize="16sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Cataracts and age-related macular degeneration"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit3Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit3"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Vitamin C may help lower the risk of cataracts and slow the progression of age-related macular degeneration. However, more research is needed."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit3Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Anemia"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit4Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit4"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Vitamin C enhances the absorption of iron, and some healthcare professionals recommend taking vitamin C supplements with iron tablets to improve absorption in people with iron deficiency anemia."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2Desc2"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="20dp"
+                    android:text="Good Vitamin C source:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/source_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sourceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_below="@id/source"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/vitamin_c_source"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

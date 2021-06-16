@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/honeydew"
+    tools:context=".facts.VitaminA">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Benefits of Vitamin A"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/benefit_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitTitle"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Healthful skin and hair"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:justificationMode="inter_word"
+                    android:text="Vitamin A is important in the growth of all bodily tissues, including skin and hair. It contributes to the production of sebum, which is the oil that helps maintain levels of moisture in the skin and hair."
+                    android:textSize="16sp" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="Vitamin A contributes to various bodily functions and helps prevent a range of problems, including:\n•	Night blindness \n• Infections, especially in the throat, chest, and abdomen \n•	Follicular hyperkeratosis, which can lead to bumpy skin \n•	Fertility issues \n•	Delayed growth in children \n"
+                    android:textSize="16sp" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="20dp"
+                    android:text="Good Vitamin A source:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/source_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sourceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/source"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/vitamin_a_source"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
