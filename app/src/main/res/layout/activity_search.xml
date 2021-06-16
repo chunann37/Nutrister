@@ -136,6 +136,28 @@
                     android:drawablePadding="8dp">
                 </com.google.android.material.textview.MaterialTextView>
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fiber"
+                    android:layout_alignStart="@id/foodLabel"
+                    android:layout_marginTop="15dp"
+                    android:text="Weight"
+                    android:textSize="20sp"
+                    app:drawableLeftCompat="@drawable/weight_24"
+                    android:drawablePadding="8dp">
+                </com.google.android.material.textview.MaterialTextView>
+
+                <TextView
+                    android:id="@+id/weightInput"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/weight"
+                    android:layout_marginStart="180dp"
+                    android:text="weight"
+                    android:textSize="18sp">
+                </TextView>
 
                 <TextView
                     android:id="@+id/categoryInput"
@@ -280,11 +302,23 @@
                     android:textSize="18sp">
                 </TextView>
 
+                <TextView
+                    android:id="@+id/weightUnit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/weightInput"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/weightInput"
+                    android:layout_toRightOf="@id/weightInput"
+                    android:text="@string/g"
+                    android:textSize="18sp">
+                </TextView>
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/mealCatalog"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/fiber"
+                    android:layout_below="@id/weight"
                     android:layout_marginTop="25dp"
                     android:layout_alignStart="@id/foodLabel"
                     android:text="Meal"
@@ -297,10 +331,9 @@
                     android:id="@+id/mealSpinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/fiberInput"
+                    android:layout_below="@id/weightInput"
                     android:layout_marginTop="25dp"
-                    android:layout_alignLeft="@id/fiberInput"
-                    android:layout_alignStart="@id/fiberInput">
+                    android:layout_alignStart="@id/weightInput">
                 </Spinner>
 
                 <com.google.android.material.textview.MaterialTextView

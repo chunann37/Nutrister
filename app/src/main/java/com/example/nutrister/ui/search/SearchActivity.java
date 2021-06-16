@@ -46,12 +46,12 @@ import java.util.concurrent.CompletableFuture;
 
 public class SearchActivity extends AppCompatActivity {
 
-    TextView categoryName,foodLabel, foodEnergy, foodCarbs, foodProtein, foodFat, foodFiber;
+    TextView categoryName,foodLabel, foodEnergy, foodCarbs, foodProtein, foodFat, foodFiber,foodWeight;
     ImageView image;
     Spinner mealSpinner, servingSpinner;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID, mealName, servingSize, mFoodLabel, mFoodEnergy, mFoodCarbs, mFoodProtein, mFoodFat, mFoodFiber;
+    String userID, mealName, servingSize, mFoodLabel, mFoodEnergy, mFoodCarbs, mFoodProtein, mFoodFat, mFoodFiber, mFoodWeight;
     Button customFoodBtn;
 
     @Override
@@ -65,6 +65,7 @@ public class SearchActivity extends AppCompatActivity {
         foodProtein = findViewById(R.id.proteinInput);
         foodFat = findViewById(R.id.fatInput);
         foodFiber = findViewById(R.id.fiberInput);
+        foodWeight = findViewById(R.id.weightInput);
         image = findViewById(R.id.imageView);
         customFoodBtn = findViewById(R.id.customFoodBtn);
 
@@ -77,6 +78,7 @@ public class SearchActivity extends AppCompatActivity {
         foodProtein.setText(intent.getStringExtra("protein"));
         foodFat.setText(intent.getStringExtra("fat"));
         foodFiber.setText(intent.getStringExtra("fiber"));
+        foodWeight.setText(intent.getStringExtra("weight"));
 
         mFoodLabel = intent.getStringExtra("label");
         mFoodEnergy = intent.getStringExtra("energy");

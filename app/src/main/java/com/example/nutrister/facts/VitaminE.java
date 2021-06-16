@@ -10,12 +10,15 @@ import android.view.MenuItem;
 
 import com.example.nutrister.R;
 
+import java.util.Objects;
+
 public class VitaminE extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vitamin_e);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Vitamin E");
     }
     //Back to previous fragment
     @Override

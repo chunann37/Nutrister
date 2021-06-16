@@ -238,7 +238,7 @@ public class SuggestFragment extends Fragment {
             diseaseArray.addAll(new LinkedList<>(Arrays.asList(getResources().getStringArray(R.array.exercise_disease))));
 
         } else if (title.getText().toString().contains("Smoking")) {
-            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tobacco_24, 0, 0, 0);
+            title.setCompoundDrawablesWithIntrinsicBounds(R.drawable.smoke_24, 0, 0, 0);
             title.setCompoundDrawablePadding(getActivity().getApplicationContext().getResources().getDimensionPixelOffset(R.dimen.small_padding));
             diseaseArray.addAll(new LinkedList<>(Arrays.asList(getResources().getStringArray(R.array.smoke_disease))));
 

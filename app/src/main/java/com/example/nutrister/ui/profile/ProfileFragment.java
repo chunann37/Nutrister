@@ -51,12 +51,17 @@ public class ProfileFragment extends Fragment {
     FirebaseFirestore fStore;
     String userID, gender;
     Button profileBtn, logoutBtn;
-    LineChart lineChart;
+    LineChart weightLineChart, caloriesLineCahrt;
 
     private ArrayList<Entry> dataVals = new ArrayList<Entry>();
+    private ArrayList<Entry> dataValsCalories = new ArrayList<Entry>();
     private List<Float> historyWeight = new ArrayList<Float>();
-    private List<String> historyDate = new ArrayList<String>();
+    private List<String> dateWeight = new ArrayList<String>();
+    private List<Float> historyCalories = new ArrayList<Float>();
+    private List<String> dateCalories = new ArrayList<String>();
+
     private List<String> xAxisValues = new ArrayList<>();
+    private List<String> xAxisValuesCalories = new ArrayList<>();
 
     private ProfileViewModel profileViewModel;
 
@@ -74,7 +79,8 @@ public class ProfileFragment extends Fragment {
         bmiStatus = view.findViewById(R.id.profileBMIstatus);
         profileBtn = view.findViewById(R.id.updateBtn);
         logoutBtn = view.findViewById(R.id.logoutButton);
-        lineChart = view.findViewById(R.id.lineChart);
+        weightLineChart = view.findViewById(R.id.WeightLineChart);
+        caloriesLineCahrt = view.findViewById(R.id.CaloriesLineChart);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -83,9 +89,14 @@ public class ProfileFragment extends Fragment {
         CompletableFuture future = new CompletableFuture<>();
         CompletableFuture future2 = new CompletableFuture<>();
         loadData(future);
-        future.thenAccept(x -> loadChartData(future2));
-        future2.thenAccept(x -> setupLineChart());
+        future.thenAccept(x -> loadWeightChartData(future2));
+        future2.thenAccept(x -> setupWeightLineChart());
 
+        CompletableFuture futureCalories = new CompletableFuture<>();
+        CompletableFuture futureCalories2 = new CompletableFuture<>();
+        loadCaloriesData(futureCalories);
+        futureCalories.thenAccept(x -> loadCaloriesChartData(futureCalories2));
+        futureCalories2.thenAccept(x -> setupCaloriesLineChart());
 
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,22 +118,24 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
+
+
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private void loadChartData(CompletableFuture future2) {
+    private void loadWeightChartData(CompletableFuture future2) {
         for (int i = 0; i < historyWeight.size(); i++) {
             Log.d("", "The history weight size" + historyWeight.size());
             dataVals.add(new Entry(i + 1, historyWeight.get(i)));
             Log.d("", "The data " + dataVals.get(i));
         }
         xAxisValues.add(0, "");
-        for (int i = 0; i < historyDate.size(); i++) {
-            xAxisValues.add(i + 1, historyDate.get(i));
+        for (int i = 0; i < dateWeight.size(); i++) {
+            xAxisValues.add(i + 1, dateWeight.get(i));
         }
         future2.complete(null);
 
     }
 
-    private void setupLineChart() {
+    private void setupWeightLineChart() {
         LineDataSet lineDataSet = new LineDataSet(dataVals, "Weight Tracking");
         lineDataSet.setColor(Color.parseColor("#B7E9F7"));
         lineDataSet.setValueTextSize(20f);
@@ -131,40 +144,40 @@ public class ProfileFragment extends Fragment {
         dataSets.add(lineDataSet);
 
         //customization
-        lineChart.setExtraLeftOffset(15);
-        lineChart.setExtraRightOffset(30);
-        lineChart.setExtraBottomOffset(15);
+        weightLineChart.setExtraLeftOffset(15);
+        weightLineChart.setExtraRightOffset(30);
+        weightLineChart.setExtraBottomOffset(15);
         //hide background lines
-        lineChart.getXAxis().setDrawGridLines(false);
-        lineChart.getAxisLeft().setDrawGridLines(false);
-        lineChart.getAxisRight().setDrawGridLines(false);
+        weightLineChart.getXAxis().setDrawGridLines(false);
+        weightLineChart.getAxisLeft().setDrawGridLines(false);
+        weightLineChart.getAxisRight().setDrawGridLines(false);
         //hide right Y and top X
-        YAxis rightYAxis = lineChart.getAxisRight();
+        YAxis rightYAxis = weightLineChart.getAxisRight();
         rightYAxis.setEnabled(false);
-        XAxis topXAxis = lineChart.getXAxis();
+        XAxis topXAxis = weightLineChart.getXAxis();
         topXAxis.setEnabled(false);
         //configure xyAxis
-        XAxis xAxis = lineChart.getXAxis();
+        XAxis xAxis = weightLineChart.getXAxis();
         xAxis.setGranularity(1f);
         xAxis.setEnabled(true);
         xAxis.setDrawGridLines(false);
         xAxis.setTextSize(14f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.parseColor("#A9A9A9"));
-        YAxis leftYAxis = lineChart.getAxisLeft();
+        YAxis leftYAxis = weightLineChart.getAxisLeft();
         leftYAxis.setTextSize(14f);
         leftYAxis.setLabelCount(4);
         leftYAxis.setTextColor(Color.parseColor("#A9A9A9"));
         lineDataSet.setLineWidth(4f);
         //String setter in x-Axis
-        lineChart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
+        weightLineChart.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValues));
 
         LineData data = new LineData((dataSets));
-        lineChart.setData(data);
-        lineChart.setVisibleXRangeMaximum(2);
-        lineChart.invalidate();
-        lineChart.getLegend().setEnabled(false);
-        lineChart.getDescription().setEnabled(false);
+        weightLineChart.setData(data);
+        weightLineChart.setVisibleXRangeMaximum(2);
+        weightLineChart.invalidate();
+        weightLineChart.getLegend().setEnabled(false);
+        weightLineChart.getDescription().setEnabled(false);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -200,7 +213,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
+        //Weight data
         CollectionReference weightRef = fStore.collection("users").document(userID).collection("weight_history");
         weightRef.orderBy("timestamp", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -208,20 +221,97 @@ public class ProfileFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Log.d("", "The task " + task);
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        historyDate.add(0, document.getString("date"));
-                        Log.d("", "Date is " + historyDate.get(0));
+                        dateWeight.add(0, document.getString("date"));
+                        Log.d("", "Date is " + dateWeight.get(0));
                         historyWeight.add(Float.parseFloat(document.getString("weight")));
                     }
-                    Collections.reverse(historyDate);
+                    Collections.reverse(dateWeight);
                     future.complete(null);
                 } else {
                     Log.d("", "Error getting documents: ", task.getException());
                 }
-
             }
-
         });
     }
 
+    private void loadCaloriesData(CompletableFuture futureCalories){
+        //Calories data
+        CollectionReference caloriesRef = fStore.collection("users").document(userID).collection("calories_history");
+        caloriesRef.orderBy("timestamp", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    Log.d("", "The task " + task);
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        dateCalories.add(0, document.getString("date"));
+                        Log.d("", "Date is " + dateCalories.get(0));
+                        historyCalories.add(Float.parseFloat(String.valueOf(document.getLong("calories"))));
+                    }
+                    Collections.reverse(dateCalories);
+                    futureCalories.complete(null);
+                } else {
+                    Log.d("", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
 
+    private void loadCaloriesChartData(CompletableFuture futureCalories2) {
+        for (int i = 0; i < historyCalories.size(); i++) {
+            Log.d("", "The history calories size" + historyCalories.size());
+            dataValsCalories.add(new Entry(i + 1, historyCalories.get(i)));
+            Log.d("", "The data " + dataValsCalories.get(i));
+        }
+        xAxisValuesCalories.add(0, "");
+        for (int i = 0; i < dateCalories.size(); i++) {
+            xAxisValuesCalories.add(i + 1, dateCalories.get(i));
+        }
+        futureCalories2.complete(null);
+
+    }
+
+    private void setupCaloriesLineChart() {
+        LineDataSet lineDataSet = new LineDataSet(dataValsCalories, "Calories Tracking");
+        lineDataSet.setColor(Color.parseColor("#B7E9F7"));
+        lineDataSet.setValueTextSize(20f);
+        lineDataSet.setMode(LineDataSet.Mode.HORIZONTAL_BEZIER);
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
+
+        //customization
+        caloriesLineCahrt.setExtraLeftOffset(15);
+        caloriesLineCahrt.setExtraRightOffset(30);
+        caloriesLineCahrt.setExtraBottomOffset(15);
+        //hide background lines
+        caloriesLineCahrt.getXAxis().setDrawGridLines(false);
+        caloriesLineCahrt.getAxisLeft().setDrawGridLines(false);
+        caloriesLineCahrt.getAxisRight().setDrawGridLines(false);
+        //hide right Y and top X
+        YAxis rightYAxis = caloriesLineCahrt.getAxisRight();
+        rightYAxis.setEnabled(false);
+        XAxis topXAxis = caloriesLineCahrt.getXAxis();
+        topXAxis.setEnabled(false);
+        //configure xyAxis
+        XAxis xAxis = caloriesLineCahrt.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setEnabled(true);
+        xAxis.setDrawGridLines(false);
+        xAxis.setTextSize(14f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextColor(Color.parseColor("#A9A9A9"));
+        YAxis leftYAxis = caloriesLineCahrt.getAxisLeft();
+        leftYAxis.setTextSize(14f);
+        leftYAxis.setLabelCount(4);
+        leftYAxis.setTextColor(Color.parseColor("#A9A9A9"));
+        lineDataSet.setLineWidth(4f);
+        //String setter in x-Axis
+        caloriesLineCahrt.getXAxis().setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(xAxisValuesCalories));
+
+        LineData data = new LineData((dataSets));
+        caloriesLineCahrt.setData(data);
+        caloriesLineCahrt.setVisibleXRangeMaximum(2);
+        caloriesLineCahrt.invalidate();
+        caloriesLineCahrt.getLegend().setEnabled(false);
+        caloriesLineCahrt.getDescription().setEnabled(false);
+    }
 }

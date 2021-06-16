@@ -10,12 +10,15 @@ import android.view.MenuItem;
 
 import com.example.nutrister.R;
 
+import java.util.Objects;
+
 public class Magnesium extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_magnesium);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Magnesium");
     }
     //Back to previous fragment
     @Override

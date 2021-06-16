@@ -10,12 +10,15 @@ import android.view.MenuItem;
 
 import com.example.nutrister.R;
 
+import java.util.Objects;
+
 public class Potassium extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_potassium);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Potassium");
     }
     //Back to previous fragment
     @Override

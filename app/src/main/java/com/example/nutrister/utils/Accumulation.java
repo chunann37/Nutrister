@@ -11,14 +11,20 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -70,6 +76,28 @@ public class Accumulation {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("", "Consumed info created" + userID);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("", "onFailure: " + e.toString());
+            }
+        });
+
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
+        SimpleDateFormat df2 = new SimpleDateFormat("dd_MM", Locale.getDefault());
+        String formattedDate = df.format(c);
+        String formattedDate2 = df2.format(c);
+        DocumentReference caloriesRef = this.db.collection("users").document(userID).collection("calories_history").document(formattedDate2);
+        Map<String, Object> caloriesHistory = new HashMap<>();
+        caloriesHistory.put("calories", totalEnergy);
+        caloriesHistory.put("date", formattedDate);
+        caloriesHistory.put("timestamp", FieldValue.serverTimestamp());
+        caloriesRef.set(caloriesHistory).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("", "Calories history updated" + userID);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

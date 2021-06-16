@@ -189,6 +189,7 @@ public class UpdateProfile extends AppCompatActivity {
                         Log.d("", "Constructed food log" + userID);
                     }
                 });
+
                 Date c = Calendar.getInstance().getTime();
                 SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
                 String formattedDate = df.format(c);
@@ -201,6 +202,24 @@ public class UpdateProfile extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d("","Weight history updated successfully");
+                    }
+                });
+                SimpleDateFormat df2 = new SimpleDateFormat("dd_MM", Locale.getDefault());
+                String formattedDate2 = df2.format(c);
+                DocumentReference caloriesRef = fStore.collection("users").document(userID).collection("calories_history").document(formattedDate2);
+                Map<String, Object> caloriesHistory = new HashMap<>();
+                caloriesHistory.put("calories", 0);
+                caloriesHistory.put("date", formattedDate);
+                caloriesHistory.put("timestamp", FieldValue.serverTimestamp());
+                caloriesRef.set(caloriesHistory).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("", "Calories history updated" + userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("", "onFailure: " + e.toString());
                     }
                 });
 

@@ -1,9 +1,9 @@
 package com.example.nutrister.ui.log;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -22,7 +23,6 @@ import com.example.nutrister.utils.Accumulation;
 import com.example.nutrister.utils.FoodAdapter;
 import com.example.nutrister.utils.FoodItem;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -35,7 +35,7 @@ import java.util.Objects;
 public class LogFragment extends Fragment {
 
     LogViewModel logViewModel;
-    FoodAdapter adapterBf,adapterLc,adapterDn,adapterSn;
+    FoodAdapter adapterBf, adapterLc, adapterDn, adapterSn;
     Button addFood1, addFood2, addFood3, addFood4;
     String userID;
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
@@ -54,7 +54,7 @@ public class LogFragment extends Fragment {
         //Breakfast
         Query queryBf = db.collection("users_food_log").document(userID).collection("Breakfast");
         FirestoreRecyclerOptions<FoodItem> optionsBf = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                .setQuery(queryBf,FoodItem.class)
+                .setQuery(queryBf, FoodItem.class)
                 .build();
         adapterBf = new FoodAdapter(optionsBf);
         RecyclerView recyclerBF = root.findViewById(R.id.breakfastView);
@@ -63,7 +63,7 @@ public class LogFragment extends Fragment {
         recyclerBF.setAdapter(adapterBf);
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
                 return false;
@@ -71,14 +71,28 @@ public class LogFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapterBf.deleteItem(viewHolder.getAdapterPosition());
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapterBf.deleteItem(viewHolder.getAdapterPosition());
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterBf.notifyItemChanged(viewHolder.getAdapterPosition());
+                    }
+                })
+                        .create()
+                        .show();
             }
         }).attachToRecyclerView(recyclerBF);
 
         //Lunch
         Query queryLc = db.collection("users_food_log").document(userID).collection("Lunch");
         FirestoreRecyclerOptions<FoodItem> optionsLc = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                .setQuery(queryLc,FoodItem.class)
+                .setQuery(queryLc, FoodItem.class)
                 .build();
         adapterLc = new FoodAdapter(optionsLc);
         RecyclerView recyclerLc = root.findViewById(R.id.lunchView);
@@ -86,7 +100,7 @@ public class LogFragment extends Fragment {
         adapterLc.notifyDataSetChanged();
         recyclerLc.setAdapter(adapterLc);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
                 return false;
@@ -94,14 +108,28 @@ public class LogFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapterLc.deleteItem(viewHolder.getAdapterPosition());
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapterLc.deleteItem(viewHolder.getAdapterPosition());
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterLc.notifyItemChanged(viewHolder.getAdapterPosition());
+                    }
+                })
+                        .create()
+                        .show();
             }
         }).attachToRecyclerView(recyclerLc);
 
         //Dinner
         Query queryDn = db.collection("users_food_log").document(userID).collection("Dinner");
         FirestoreRecyclerOptions<FoodItem> optionsDn = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                .setQuery(queryDn,FoodItem.class)
+                .setQuery(queryDn, FoodItem.class)
                 .build();
         adapterDn = new FoodAdapter(optionsDn);
         RecyclerView recyclerDn = root.findViewById(R.id.dinnerView);
@@ -109,7 +137,7 @@ public class LogFragment extends Fragment {
         adapterDn.notifyDataSetChanged();
         recyclerDn.setAdapter(adapterDn);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
                 return false;
@@ -117,14 +145,28 @@ public class LogFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapterDn.deleteItem(viewHolder.getAdapterPosition());
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapterDn.deleteItem(viewHolder.getAdapterPosition());
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterDn.notifyItemChanged(viewHolder.getAdapterPosition());
+                    }
+                })
+                        .create()
+                        .show();
             }
         }).attachToRecyclerView(recyclerDn);
 
         //Snack
         Query querySn = db.collection("users_food_log").document(userID).collection("Snack");
         FirestoreRecyclerOptions<FoodItem> optionsSn = new FirestoreRecyclerOptions.Builder<FoodItem>()
-                .setQuery(querySn,FoodItem.class)
+                .setQuery(querySn, FoodItem.class)
                 .build();
         adapterSn = new FoodAdapter(optionsSn);
         RecyclerView recyclerSn = root.findViewById(R.id.snackView);
@@ -132,7 +174,7 @@ public class LogFragment extends Fragment {
         adapterSn.notifyDataSetChanged();
         recyclerSn.setAdapter(adapterSn);
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
                 return false;
@@ -140,12 +182,23 @@ public class LogFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapterSn.deleteItem(viewHolder.getAdapterPosition());
+                new AlertDialog.Builder(viewHolder.itemView.getContext())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapterSn.deleteItem(viewHolder.getAdapterPosition());
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapterSn.notifyItemChanged(viewHolder.getAdapterPosition());
+                    }
+                })
+                        .create()
+                        .show();
             }
         }).attachToRecyclerView(recyclerSn);
-
-
-
 
 
         //AddFood Button
@@ -202,7 +255,7 @@ public class LogFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        Accumulation accumulation = new Accumulation(userID,fAuth,db);
+        Accumulation accumulation = new Accumulation(userID, fAuth, db);
         accumulation.doCalculation();
         adapterBf.stopListening();
         adapterLc.stopListening();

@@ -134,7 +134,7 @@ public class SetupProfile extends AppCompatActivity {
         if (TextUtils.isEmpty(weight)) {
             mWeight.setError("Please enter your weight");
             return false;
-        } else if (Integer.parseInt(weight) < 3 || Integer.parseInt(weight) > 150) {
+        } else if (Integer.parseInt(weight) < 3 || Integer.parseInt(weight) > 200) {
             mWeight.setError("Please enter valid weight");
             return false;
         } else {

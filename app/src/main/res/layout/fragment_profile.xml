@@ -202,31 +202,49 @@
                     android:text="@string/logout" />
 
                 <TextView
-                    android:id="@+id/lineChartTitle"
+                    android:id="@+id/CaloriesChartTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/logoutButton"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="22dp"
-                    android:text="Weight Trend"
+                    android:text="Calories History"
                     android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
                 <com.github.mikephil.charting.charts.LineChart
-                    android:id="@+id/lineChart"
+                    android:id="@+id/CaloriesLineChart"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:layout_below="@id/lineChartTitle"
+                    android:layout_below="@id/CaloriesChartTitle"
                     android:layout_marginTop="5dp"
                     android:background="@color/milk"/>
 
+                <TextView
+                    android:id="@+id/WeightChartTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/CaloriesLineChart"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="22dp"
+                    android:text="Weight History"
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/WeightLineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_below="@id/WeightChartTitle"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/milk"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:layout_below="@id/lineChart">
+                    android:layout_below="@id/WeightLineChart">
                 </LinearLayout>
 
 
