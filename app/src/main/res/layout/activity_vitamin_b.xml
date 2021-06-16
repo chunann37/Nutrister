@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/honeydew"
+    tools:context=".facts.VitaminB">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Benefits of Vitamin B12"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/benefit_24"
+                    android:drawablePadding="8dp"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitTitle"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:padding="2dp"
+                    android:text="Vitamin B-12 is crucial to the normal function of the brain and the nervous system.\nIt is also involved in the formation of red blood cells and helps to create and regulate DNA.\nThe human body produces millions of red blood cells every minute. These cells cannot multiply properly without vitamin B-12.\nThe production of red blood cells reduces if vitamin B-12 levels are too low."
+                    android:textSize="18sp"
+                    android:justificationMode="inter_word"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitDesc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="20dp"
+                    android:text="Good Vitamin B12 source:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/source_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sourceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_below="@id/source"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/vitamin_b_source"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -36,4 +36,63 @@
         <item>5</item>
     </string-array>
 
+    <string-array name="exercise_disease">
+        <item>•	Obesity \n</item>
+        <item>•	Heart diseases \n</item>
+        <item>•	Stroke \n</item>
+        <item>•	High blood pressure \n</item>
+        <item>•	Abnormal blood lipids \n</item>
+        <item>•	Type 2 diabetes \n</item>
+        <item>•	Osteoporosis and falls \n</item>
+    </string-array>
+
+    <string-array name="alcohol_disease">
+        <item>•	High blood pressure \n</item>
+        <item>•	Heart diseases \n</item>
+        <item>•	Stroke \n</item>
+        <item>•	Liver disease \n</item>
+        <item>•	Digestive problems \n</item>
+        <item>•	Cancers \n</item>
+        <item>•	Learning and memory problems \n</item>
+    </string-array>
+
+    <string-array name="smoke_disease">
+        <item>•	Cancers \n</item>
+        <item>•	Chronic obstructive pulmonary disease (COPD) \n</item>
+        <item>•	Stroke \n</item>
+        <item>•	Heart diseases \n</item>
+        <item>•	Dental problems \n</item>
+        <item>•	Bone health \n</item>
+        <item>•	Reproductive problems \n</item>
+    </string-array>
+
+    <string-array name="pressure_disease">
+        <item>•	Heart diseases \n</item>
+        <item>•	Kidney diseases\n</item>
+        <item>•	Stroke \n</item>
+        <item>•	Vision loss \n</item>
+        <item>•	Sexual dysfunction \n</item>
+    </string-array>
+
+    <string-array name="cholesterol_disease">
+        <item>•	Stomachache \n</item>
+        <item>•	Angina \n</item>
+        <item>•	Stroke \n</item>
+        <item>•	Heart diseases \n</item>
+        <item>•	Weak blood flow \n</item>
+    </string-array>
+
+    <string-array name="sugar_disease">
+        <item>•	Heart diseases \n</item>
+        <item>•	Kidney diseases\n</item>
+        <item>•	Stroke \n</item>
+        <item>•	Poor circulation to the legs and feet \n</item>
+        <item>•	Slow wound-healing \n</item>
+        <item>•	Vision loss \n</item>
+        <item>•	Sexual dysfunction \n</item>
+        <item>•	Nerve damage that causes tingling, pain, or less sensation in feet, legs, and hands \n</item>
+    </string-array>
+
+
+
 </resources>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/honeydew"
+    tools:context=".facts.Calcium">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:isScrollContainer="false"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Benefits of Calcium"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/benefit_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefitTitle"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Bone health"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="As children grow, calcium contributes to the development of their bones. After a person stops growing, calcium continues to help maintain the bones and slow down bone density loss, which is a natural part of the aging process. Calcium supplements also help to prevent developing osteoporosis."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit1Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="•	Muscle contraction"
+                    android:textSize="18sp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/benefit2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginEnd="20dp"
+                    android:text="Calcium helps regulate muscle contraction. When a nerve stimulates a muscle, the body releases calcium. The calcium helps the proteins in muscle carry out the work of contraction."
+                    android:textSize="16sp"
+                    android:justificationMode="inter_word"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/benefit2Desc"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_marginTop="20dp"
+                    android:text="Good Calcium source:"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/source_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/sourceList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/benefitTitle"
+                    android:layout_below="@id/source"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/calcium_source"
+                    android:textSize="18sp"
+                    />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

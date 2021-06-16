@@ -13,6 +13,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nutrister">
         <activity
+            android:name=".facts.VitaminK"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.VitaminE"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.VitaminD"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.VitaminC"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.VitaminB"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.VitaminA"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.Potassium"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.Magnesium"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".facts.Calcium"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".CustomFood"
             android:parentActivityName=".MainActivity" />
         <activity

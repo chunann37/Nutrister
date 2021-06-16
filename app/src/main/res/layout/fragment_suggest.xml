@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/honeydew"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.suggest.SuggestFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -449,84 +449,72 @@
                     android:layout_marginTop="20dp"
                     android:text="Refresh" />
 
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/diseaseTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/refreshButton"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Potential diseases"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/diseaseCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/diseaseTitle"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/purple_500">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/border"
+                        android:orientation="vertical"
+                        android:padding="3dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/diseaseList"
+                                android:layout_width="353dp"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="5dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:gravity="bottom"
+                                android:text="None from acknowledgement"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:id="@+id/checkupTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_below="@id/refreshButton"
+                    android:layout_below="@id/diseaseCard"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="Fact Check"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
-
-                <Button
-                    android:id="@+id/exerciseButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/checkupTitle"
-                    android:layout_alignStart="@id/checkupTitle"
-                    android:layout_marginTop="10dp"
-                    android:text="Exercise"
-                    android:textSize="12sp"/>
-
-                <Button
-                    android:id="@+id/drinkButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@id/exerciseButton"
-                    android:layout_alignBaseline="@id/exerciseButton"
-                    android:text="Alcohol"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/smokeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@id/drinkButton"
-                    android:layout_alignBaseline="@id/exerciseButton"
-                    android:text="Tobacco use"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/pressureButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exerciseButton"
-                    android:layout_alignStart="@id/checkupTitle"
-                    android:layout_marginTop="10dp"
-                    android:text="Blood Pressure"
-                    android:textSize="12sp"/>
-
-                <Button
-                    android:id="@+id/sugarButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toEndOf="@id/pressureButton"
-                    android:layout_alignBaseline="@id/pressureButton"
-                    android:text="Blood Sugar"
-                    android:textSize="12sp" />
-
-                <Button
-                    android:id="@+id/cholesterolButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/pressureButton"
-                    android:layout_alignStart="@id/checkupTitle"
-                    android:layout_marginTop="10dp"
-                    android:text="Cholesterol"
-                    android:textSize="12sp"/>
 
                 <Button
                     android:id="@+id/calciumButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cholesterolButton"
+                    android:layout_below="@id/checkupTitle"
                     android:layout_alignStart="@id/checkupTitle"
                     android:layout_marginTop="10dp"
                     android:text="Calcium"
