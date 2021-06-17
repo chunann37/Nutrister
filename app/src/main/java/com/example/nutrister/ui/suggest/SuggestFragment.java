@@ -266,8 +266,11 @@ public class SuggestFragment extends Fragment {
 
     private void printDiseases(LinkedList<String> diseaseArray) {
         HashSet<String> hashSet = new HashSet<>(diseaseArray);
-        diseaseList.setText(TextUtils.join("", hashSet));
-
+        if (hashSet.isEmpty()){
+            diseaseList.setText(R.string.no_disease);
+        } else {
+            diseaseList.setText(TextUtils.join("", hashSet));
+        }
 
     }
 }

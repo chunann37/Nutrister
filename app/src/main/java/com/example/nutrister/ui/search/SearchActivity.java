@@ -51,7 +51,7 @@ public class SearchActivity extends AppCompatActivity {
     Spinner mealSpinner, servingSpinner;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID, mealName, servingSize, mFoodLabel, mFoodEnergy, mFoodCarbs, mFoodProtein, mFoodFat, mFoodFiber, mFoodWeight;
+    String userID, mealName, servingSize, mFoodLabel, mFoodEnergy, mFoodCarbs, mFoodProtein, mFoodFat, mFoodFiber, mFoodWeight, mealDefault;
     Button customFoodBtn;
 
     @Override
@@ -86,6 +86,8 @@ public class SearchActivity extends AppCompatActivity {
         mFoodProtein = intent.getStringExtra("protein");
         mFoodFat = intent.getStringExtra("fat");
         mFoodFiber = intent.getStringExtra("fiber");
+        mealDefault = intent.getStringExtra("mealDefault");
+
 
         String imageUrl = intent.getStringExtra("image");
         if (imageUrl == null) {
@@ -106,6 +108,8 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter mealAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, mealList);
         mealAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mealSpinner.setAdapter(mealAdapter);
+        int mealSpinnerPosition = mealAdapter.getPosition(mealDefault);
+        mealSpinner.setSelection(mealSpinnerPosition);
 
         //Serving size Drop-down list
         servingSpinner = findViewById(R.id.servingSpinner);

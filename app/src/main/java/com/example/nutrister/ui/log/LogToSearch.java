@@ -44,6 +44,7 @@ public class LogToSearch extends AppCompatActivity {
 
     private ListView mListView;
     List<String> searchResult = new ArrayList<>();
+    String mealDefault;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,10 @@ public class LogToSearch extends AppCompatActivity {
 
         mListView = findViewById(R.id.foodList);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Search");
+
+        //Intent from log fragment
+        Intent defaultIntent = getIntent();
+        mealDefault = defaultIntent.getStringExtra("mealDefault");
 
     }
     //Back to previous fragment
@@ -150,6 +155,7 @@ public class LogToSearch extends AppCompatActivity {
                             intent.putExtra("fat", roundedFat);
                             intent.putExtra("fiber", roundedFiber);
                             intent.putExtra("weight", roundedWeight);
+                            intent.putExtra("mealDefault", mealDefault);
 
                         }
                         startActivity(intent);

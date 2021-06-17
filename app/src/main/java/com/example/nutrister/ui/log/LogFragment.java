@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nutrister.R;
+import com.example.nutrister.UpdateProfile;
 import com.example.nutrister.utils.Accumulation;
 import com.example.nutrister.utils.FoodAdapter;
 import com.example.nutrister.utils.FoodItem;
@@ -209,25 +210,33 @@ public class LogFragment extends Fragment {
         this.addFood1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogFragment.this.getActivity(), LogToSearch.class));
+                Intent intent = new Intent(LogFragment.this.getActivity(), LogToSearch.class);
+                intent.putExtra("mealDefault", "Breakfast");
+                startActivity(intent);
             }
         });
         this.addFood2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogFragment.this.getActivity(), LogToSearch.class));
+                Intent intent = new Intent(LogFragment.this.getActivity(), LogToSearch.class);
+                intent.putExtra("mealDefault", "Lunch");
+                startActivity(intent);
             }
         });
         this.addFood3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogFragment.this.getActivity(), LogToSearch.class));
+                Intent intent = new Intent(LogFragment.this.getActivity(), LogToSearch.class);
+                intent.putExtra("mealDefault", "Dinner");
+                startActivity(intent);
             }
         });
         this.addFood4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LogFragment.this.getActivity(), LogToSearch.class));
+                Intent intent = new Intent(LogFragment.this.getActivity(), LogToSearch.class);
+                intent.putExtra("mealDefault", "Snack");
+                startActivity(intent);
             }
         });
 

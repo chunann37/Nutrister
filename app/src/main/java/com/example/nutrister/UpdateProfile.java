@@ -50,7 +50,8 @@ public class UpdateProfile extends AppCompatActivity {
     Spinner mExercise, mDrink;
     RadioGroup mSmoke, mPressure, mSugar, mCholesterol;
     RadioButton bSmoke, bPressure, bSugar, bCholesterol;
-    String userID, age, gender;
+    String userID, age, gender, weightDefault, heightDefault, exerciseDefault,
+            drinkDefault, smokeDefault, pressureDefault, sugarDefault, cholesterolDefault;
     Button updateProfileBtn;
 
 
@@ -87,6 +88,45 @@ public class UpdateProfile extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+
+        //Intent from profile fragment
+        Intent intent = getIntent();
+        weightDefault = intent.getStringExtra("weightValue");
+        heightDefault = intent.getStringExtra("heightValue");
+        exerciseDefault = intent.getStringExtra("exercise");
+        drinkDefault = intent.getStringExtra("drink");
+        smokeDefault = intent.getStringExtra("smoke");
+        pressureDefault = intent.getStringExtra("pressure");
+        sugarDefault = intent.getStringExtra("sugar");
+        cholesterolDefault = intent.getStringExtra("cholesterol");
+
+        //Set default value
+        mWeight.setText(weightDefault);
+        mHeight.setText(heightDefault);
+        int exerciseSpinnerPosition = adapterExercise.getPosition(exerciseDefault);
+        mExercise.setSelection(exerciseSpinnerPosition);
+        int drinkSpinnerPosition = adapterDrink.getPosition(drinkDefault);
+        mDrink.setSelection(drinkSpinnerPosition);
+        if (smokeDefault.equals("Yes")){
+            mSmoke.check(mSmoke.getChildAt(0).getId());
+        } else {
+            mSmoke.check(mSmoke.getChildAt(1).getId());
+        }
+        if (pressureDefault.equals("Yes")){
+            mPressure.check(mPressure.getChildAt(0).getId());
+        } else {
+            mPressure.check(mPressure.getChildAt(1).getId());
+        }
+        if (sugarDefault.equals("Yes")){
+            mSugar.check(mSugar.getChildAt(0).getId());
+        } else {
+            mSugar.check(mSugar.getChildAt(1).getId());
+        }
+        if (cholesterolDefault.equals("Yes")){
+            mCholesterol.check(mCholesterol.getChildAt(0).getId());
+        } else {
+            mCholesterol.check(mCholesterol.getChildAt(1).getId());
+        }
 
         //Retrieve user age and gender
         DocumentReference documentReference = fStore.collection("users").document(userID);

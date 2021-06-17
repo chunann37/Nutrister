@@ -49,7 +49,8 @@ public class ProfileFragment extends Fragment {
     ImageView profileImage;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userID, gender;
+    String userID, genderDefault, weightDefault, heightDefault, exerciseDefault,
+            drinkDefault, smokeDefault, pressureDefault, sugarDefault, cholesterolDefault;
     Button profileBtn, logoutBtn;
     LineChart weightLineChart, caloriesLineCahrt;
 
@@ -101,8 +102,17 @@ public class ProfileFragment extends Fragment {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getActivity(), UpdateProfile.class);
-                startActivity(in);
+                Intent intent = new Intent(getActivity(), UpdateProfile.class);
+                intent.putExtra("weightValue", weightDefault);
+                intent.putExtra("heightValue", heightDefault);
+                intent.putExtra("exercise", exerciseDefault);
+                intent.putExtra("drink", drinkDefault);
+                intent.putExtra("smoke", smokeDefault);
+                intent.putExtra("pressure", pressureDefault);
+                intent.putExtra("sugar", sugarDefault);
+                intent.putExtra("cholesterol", cholesterolDefault);
+
+                startActivity(intent);
             }
         });
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -193,9 +203,17 @@ public class ProfileFragment extends Fragment {
                 height.setText(documentSnapshot.getString("heightValue"));
                 bmi.setText(documentSnapshot.getString("bmiValue"));
                 bmiStatus.setText(documentSnapshot.getString("bmiStatus"));
-                gender = documentSnapshot.getString("gender");
+                genderDefault = documentSnapshot.getString("gender");
+                weightDefault = documentSnapshot.getString("weightValue");
+                heightDefault = documentSnapshot.getString("heightValue");
+                exerciseDefault = documentSnapshot.getString("exercise");
+                drinkDefault = documentSnapshot.getString("drink");
+                smokeDefault = documentSnapshot.getString("smoke");
+                pressureDefault = documentSnapshot.getString("drink");
+                sugarDefault = documentSnapshot.getString("sugar");
+                cholesterolDefault = documentSnapshot.getString("cholesterol");
 
-                if(gender.equals("Male")){
+                if(genderDefault.equals("Male")){
                     profileImage.setImageResource(R.drawable.profile_male);
                 } else {
                     profileImage.setImageResource(R.drawable.profile_female);
