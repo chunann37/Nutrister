@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/honeydew"
+    android:background="@drawable/image_background3"
     tools:context=".Questionnaire">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/health_evaluation"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -27,7 +28,8 @@
         android:layout_marginTop="40dp"
         android:gravity="center_vertical"
         android:text="@string/exercise"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_run_24"
         android:drawableTint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -39,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exerciseQ" />
@@ -46,12 +49,13 @@
 
     <TextView
         android:id="@+id/smokeQ"
-        android:layout_width="194dp"
+        android:layout_width="200dp"
         android:layout_height="37dp"
         android:layout_marginTop="25dp"
         android:gravity="center_vertical"
         android:text="@string/smoke"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_smoke_24"
         app:drawableTint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -70,13 +74,17 @@
             android:id="@+id/smoke_Yes"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/yes" />
+            android:text="@string/yes"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <RadioButton
             android:id="@+id/smoke_No"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/no" />
+            android:text="@string/no"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </RadioGroup>
 
@@ -87,7 +95,8 @@
         android:layout_marginTop="25dp"
         android:gravity="center_vertical"
         android:text="@string/drink_heavily"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_wine_24"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,18 +108,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/drinkQ" />
 
     <TextView
         android:id="@+id/bloodPressureQ"
-        android:layout_width="194dp"
+        android:layout_width="200dp"
         android:layout_height="37dp"
         android:layout_marginTop="25dp"
         android:gravity="center_vertical"
         android:text="@string/highBloodPressure"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_up_24"
         app:drawableTint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -129,24 +140,29 @@
             android:id="@+id/bp_Yes"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/yes" />
+            android:text="@string/yes"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <RadioButton
             android:id="@+id/bp_No"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/no" />
+            android:text="@string/no"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </RadioGroup>
 
     <TextView
         android:id="@+id/bloodSugarQ"
-        android:layout_width="194dp"
+        android:layout_width="200dp"
         android:layout_height="37dp"
         android:layout_marginTop="25dp"
         android:gravity="center_vertical"
         android:text="@string/highBloodSugar"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_up_24"
         app:drawableTint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -165,24 +181,29 @@
             android:id="@+id/bs_Yes"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/yes" />
+            android:text="@string/yes"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <RadioButton
             android:id="@+id/bs_No"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/no" />
+            android:text="@string/no"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </RadioGroup>
 
     <TextView
         android:id="@+id/bloodCholesterolQ"
-        android:layout_width="194dp"
+        android:layout_width="200dp"
         android:layout_height="37dp"
         android:layout_marginTop="25dp"
         android:gravity="center_vertical"
         android:text="@string/highCholesterol"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_up_24"
         app:drawableTint="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -201,13 +222,17 @@
             android:id="@+id/bc_Yes"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/yes" />
+            android:text="@string/yes"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <RadioButton
             android:id="@+id/bc_No"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:text="@string/no" />
+            android:text="@string/no"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </RadioGroup>
 
@@ -215,10 +240,11 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="100dp"
         android:onClick="finishQuestion"
         android:text="@string/finish"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

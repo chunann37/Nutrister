@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/honeydew"
+    android:background="@drawable/image_background3"
     tools:context=".SetupProfile">
 
     <TextView
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setup_your_profile"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,6 +29,7 @@
         android:padding="5dp"
         android:text="@string/username"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/setup" />
 
@@ -44,6 +46,7 @@
         android:inputType="textPersonName"
         android:padding="5dp"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/userName"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -59,6 +62,7 @@
         android:padding="5dp"
         android:text="@string/gender"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/userType" />
 
@@ -89,7 +93,8 @@
             android:drawableEnd="@drawable/ic_male_24"
             app:drawableTint="@color/black"
             android:text="@string/male"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
         <RadioButton
             android:id="@+id/female"
@@ -98,7 +103,8 @@
             android:drawableEnd="@drawable/ic_female_24"
             app:drawableTint="@color/black"
             android:text="@string/female"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"/>
     </RadioGroup>
 
     <TextView
@@ -111,6 +117,7 @@
         android:padding="5dp"
         android:text="@string/date_of_birth"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/gender" />
 
@@ -138,6 +145,7 @@
         android:padding="5dp"
         android:text="@string/weight"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/dob" />
 
@@ -152,6 +160,7 @@
         android:inputType="number|numberDecimal"
         android:padding="5dp"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/weight"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
@@ -162,6 +171,7 @@
         android:padding="5dp"
         android:text="@string/weight_measure"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/weightType"
         app:layout_constraintStart_toEndOf="@+id/weightType" />
 
@@ -177,6 +187,7 @@
         android:padding="5dp"
         android:text="@string/height"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/weight" />
 
@@ -192,6 +203,7 @@
         android:inputType="number|numberDecimal"
         android:padding="5dp"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/weightType" />
 
@@ -202,6 +214,7 @@
         android:padding="5dp"
         android:text="@string/height_measure"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/heightType"
         app:layout_constraintStart_toEndOf="@+id/heightType" />
 
@@ -212,6 +225,7 @@
         android:layout_marginBottom="100dp"
         android:text="@string/next"
         android:onClick="nextProfile"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

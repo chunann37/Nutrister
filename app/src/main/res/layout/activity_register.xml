@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/honeydew"
+    android:background="@drawable/image_background1"
     tools:context=".Register">
 
     <TextView
@@ -14,6 +14,7 @@
         android:text="@string/registration"
         android:textAllCaps="true"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +32,7 @@
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registration" />
@@ -43,6 +45,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:textStyle="bold"
         android:padding="10dp"
         android:drawableEnd="@drawable/ic_lock_24"
         android:drawableTint="@color/black"
@@ -60,6 +63,7 @@
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textStyle="bold"
         android:drawableEnd="@drawable/ic_lock_24"
         android:drawableTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,10 +72,11 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="110dp"
+        android:layout_height="54dp"
         android:layout_marginTop="32dp"
         android:text="@string/register"
+        android:textStyle="bold"
         app:backgroundTint="@color/honey_yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/already_registered_login_here"
+        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerButton" />

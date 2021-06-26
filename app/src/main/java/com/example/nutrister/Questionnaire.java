@@ -85,12 +85,9 @@ public class Questionnaire extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
-        if (fAuth.getCurrentUser() == null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            finish();
-        } else {
-            Toast.makeText(Questionnaire.this, "Please complete this health evaluation", Toast.LENGTH_SHORT).show();
-        }
+
+        Toast.makeText(Questionnaire.this, "Please complete this health evaluation", Toast.LENGTH_SHORT).show();
+
 
     }
 

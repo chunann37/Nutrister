@@ -46,7 +46,7 @@ public class SuggestFragment extends Fragment {
     private FirebaseAuth fAuth;
     private FirebaseFirestore fStore;
     private String userID;
-    private Button mRefresh,mCalcium,mMagnesium,mPotassium,mVitaminA,mVitaminB,mVitaminC,mVitaminD,mVitaminE,mVitaminK;
+    private Button mCalcium,mMagnesium,mPotassium,mVitaminA,mVitaminB,mVitaminC,mVitaminD,mVitaminE,mVitaminK;
     private LinkedList<String> diseaseArray = new LinkedList<>();
 
     private SuggestViewModel suggestViewModel;
@@ -78,7 +78,6 @@ public class SuggestFragment extends Fragment {
         advice4 = root.findViewById(R.id.suggestAdvice4);
         advice5 = root.findViewById(R.id.suggestAdvice5);
 
-        mRefresh = root.findViewById(R.id.refreshButton);
 
         mCalcium = root.findViewById(R.id.calciumButton);
         mMagnesium = root.findViewById(R.id.magnesiumButton);
@@ -125,44 +124,6 @@ public class SuggestFragment extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 weightAdvice.setText(documentSnapshot.getString("bmiAdvice"));
                 bmrValue.setText(documentSnapshot.getString("bmrValue"));
-            }
-        });
-
-        mRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference documentReference = fStore.collection("users").document(userID);
-                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @RequiresApi(api = Build.VERSION_CODES.N)
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        String healthIndex2 = documentSnapshot.getString("healthIndex2");
-                        String healthIndex1 = documentSnapshot.getString("healthIndex1");
-
-                        //Generate suggestion
-                        Suggestion suggestion = new Suggestion(healthIndex2, healthIndex1);
-                        suggestion.generateSuggestion();
-
-                        DocumentReference documentReference = fStore.collection("user_advice").document(userID);
-                        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                title0.setText(documentSnapshot.getString("title0"));
-                                advice0.setText(documentSnapshot.getString("advice0"));
-                                title1.setText(documentSnapshot.getString("title1"));
-                                advice1.setText(documentSnapshot.getString("advice1"));
-                                title2.setText(documentSnapshot.getString("title2"));
-                                advice2.setText(documentSnapshot.getString("advice2"));
-                                title3.setText(documentSnapshot.getString("title3"));
-                                advice3.setText(documentSnapshot.getString("advice3"));
-                                title4.setText(documentSnapshot.getString("title4"));
-                                advice4.setText(documentSnapshot.getString("advice4"));
-                                title5.setText(documentSnapshot.getString("title5"));
-                                advice5.setText(documentSnapshot.getString("advice5"));
-                            }
-                        });
-                    }
-                });
             }
         });
 

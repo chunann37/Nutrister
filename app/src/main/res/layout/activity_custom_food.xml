@@ -65,7 +65,7 @@
                     android:layout_below="@id/mealCatalog"
                     android:layout_alignStart="@id/foodNameTitle"
                     android:layout_alignTop="@id/servingSpinner"
-                    android:text="Serving: "
+                    android:text="Serving Size: "
                     android:textSize="20sp"
                     app:drawableLeftCompat="@drawable/serves_24"
                     android:drawablePadding="8dp"/>
@@ -143,7 +143,7 @@
                     android:layout_below="@id/customFoodTitle"
                     android:layout_marginTop="40dp"
                     android:layout_toEndOf="@id/foodNameTitle"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="10dp"
                     android:hint="Enter food name"
                     android:inputType="textAutoCorrect|textCapSentences" />
 

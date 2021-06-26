@@ -58,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        if (fAuth.getCurrentUser() == null) {
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            finish();
+        }
+
         userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
         AutoDeletion.deletion(userID,fAuth,db);
