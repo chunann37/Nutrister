@@ -39,7 +39,6 @@
             android:id="@+id/foodEnergy_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="260dp"
             android:layout_alignParentEnd="true"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -49,7 +48,6 @@
             android:text="Calories"
             android:textColor="@color/black"
             android:textSize="18sp" />
-
 
 
     </RelativeLayout>

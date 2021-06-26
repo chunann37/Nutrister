@@ -40,7 +40,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/weightTitle"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="5dp">
 
                     <LinearLayout
@@ -58,7 +59,7 @@
 
                             <TextView
                                 android:id="@+id/weightSuggestion"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingTop="5dp"
@@ -117,7 +118,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/healthTitle"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="5dp">
 
                     <LinearLayout
@@ -135,7 +137,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle0"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -148,7 +150,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice0"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle0"
                                 android:paddingStart="8dp"
@@ -170,8 +172,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView0"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/purple_500">
 
@@ -179,7 +181,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
                         android:background="@drawable/border"
                         android:orientation="vertical"
@@ -191,7 +192,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle1"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -204,7 +205,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice1"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle1"
                                 android:paddingStart="8dp"
@@ -225,8 +226,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView1"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/purple_500">
 
@@ -234,13 +235,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
+
                         android:layout_weight="0.9"
                         android:background="@drawable/border"
                         android:orientation="vertical"
-                        android:padding="3dp"
-
-                        >
+                        android:padding="3dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -248,7 +247,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle2"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -261,7 +260,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice2"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle2"
                                 android:paddingStart="8dp"
@@ -282,8 +281,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView2"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/purple_500">
 
@@ -291,7 +290,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
                         android:background="@drawable/border"
                         android:orientation="vertical"
@@ -303,7 +301,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle3"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -316,7 +314,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice3"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle3"
                                 android:paddingStart="8dp"
@@ -337,8 +335,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView3"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/purple_500">
 
@@ -346,7 +344,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
                         android:background="@drawable/border"
                         android:orientation="vertical"
@@ -358,7 +355,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle4"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -371,7 +368,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice4"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle4"
                                 android:paddingStart="8dp"
@@ -392,7 +389,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/cardView4"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="15dp"
                     android:background="@color/purple_500">
@@ -401,7 +399,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
                         android:layout_weight="0.9"
                         android:background="@drawable/border"
                         android:orientation="vertical"
@@ -413,7 +410,7 @@
 
                             <TextView
                                 android:id="@+id/suggestTitle5"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"
@@ -426,7 +423,7 @@
 
                             <TextView
                                 android:id="@+id/suggestAdvice5"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/suggestTitle5"
                                 android:paddingStart="8dp"
@@ -462,7 +459,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/diseaseTitle"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginTop="5dp"
                     android:background="@color/purple_500">
 
@@ -481,7 +479,7 @@
 
                             <TextView
                                 android:id="@+id/diseaseList"
-                                android:layout_width="353dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
                                 android:paddingEnd="5dp"

@@ -3,7 +3,7 @@ package com.example.nutrister.utils;
 import android.widget.Button;
 
 public class FoodItem {
-    private String foodCarbs, foodEnergy, foodFat, foodFiber, foodLabel, foodProtein, foodServing, timestamp;
+    private String foodCarbs, foodEnergy, foodFat, foodFiber, foodLabel, foodProtein, foodServing;
 
     public FoodItem() {
     }

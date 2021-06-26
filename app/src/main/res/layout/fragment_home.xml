@@ -22,35 +22,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/caloriesBg"
-                    android:layout_width="380dp"
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/light_blue_background"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/progressBarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/caloriesProgressBar"
-                    android:layout_marginTop="20dp"
+                    android:layout_alignStart="@id/caloriesProgressBar"
+                    android:layout_marginTop="5dp"
+                    android:gravity="bottom"
                     android:text="Calories"
                     android:textColor="@color/black"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:drawableLeftCompat="@drawable/calories_24"
-                    android:drawablePadding="8dp"/>
+                    android:drawablePadding="5dp"/>
 
                 <TextView
                     android:id="@+id/bmrValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
                     android:text="BMR"
                     android:textSize="18sp" />
 
@@ -58,11 +61,9 @@
                     android:id="@+id/backslash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_toStartOf="@id/bmrValue"
-                    android:layout_toLeftOf="@id/bmrValue"
                     android:text="/"
                     android:textSize="18sp" />
 
@@ -70,9 +71,8 @@
                     android:id="@+id/consumedValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
                     android:layout_toStartOf="@id/backslash"
                     android:layout_toLeftOf="@id/backslash"
                     android:text="Consumed"
@@ -81,45 +81,73 @@
                 <ProgressBar
                     android:id="@+id/caloriesProgressBar"
                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_below="@id/progressBarTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:indeterminate="false"
                     android:scaleY="4" />
 
-                <LinearLayout
+                </RelativeLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pieChartTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/caloriesBg"
+                    android:layout_alignStart="@id/caloriesBg"
+                    android:layout_marginTop="20dp"
+                    android:text="Nutrients"
+                    android:textColor="@color/black"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/nutrient_24"
+                    android:drawablePadding="8dp"/>
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_below="@id/pieChartTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignStart="@id/caloriesBg"
+                    android:layout_alignEnd="@id/caloriesBg"
+                    android:layout_marginEnd="10dp"/>
+
+                <RelativeLayout
                     android:id="@+id/nutrientBg"
-                    android:layout_width="380dp"
+                    android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:layout_below="@id/pieChart"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/light_blue_background"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal" >
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/showCarbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pieChart"
-                    android:layout_alignStart="@id/caloriesProgressBar"
-                    android:layout_marginTop="30dp"
-                    android:drawablePadding="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
                     android:text="Carbs"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    app:drawableLeftCompat="@drawable/piechart_green" />
+                    app:drawableLeftCompat="@drawable/piechart_green"
+                    android:drawablePadding="5dp"/>
 
                 <TextView
                     android:id="@+id/carbsValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pieChartTitle"
                     android:layout_alignBaseline="@id/carbsUnit"
                     android:layout_toEndOf="@id/showCarbs"
-                    android:layout_marginStart="80dp"
+                    android:layout_marginStart="50dp"
                     android:text="200"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -128,7 +156,6 @@
                     android:id="@+id/carbsUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pieChartTitle"
                     android:layout_alignBaseline="@id/showCarbs"
                     android:layout_toEndOf="@id/carbsValue"
                     android:text="g"
@@ -140,8 +167,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/showCarbs"
-                    android:layout_alignStart="@id/caloriesProgressBar"
                     android:layout_marginTop="20dp"
+                    android:layout_alignStart="@id/showCarbs"
                     android:text="Protein"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -152,10 +179,9 @@
                     android:id="@+id/proteinValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pieChartTitle"
                     android:layout_alignBaseline="@id/proteinUnit"
                     android:layout_toStartOf="@id/proteinUnit"
-                    android:text="Protein Value"
+                    android:text="200"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -163,7 +189,6 @@
                     android:id="@+id/proteinUnit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/pieChartTitle"
                     android:layout_alignBaseline="@id/showProtein"
                     android:layout_alignEnd="@id/carbsUnit"
                     android:text="g"
@@ -175,8 +200,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showCarbs"
-                    android:layout_marginStart="35dp"
-                    android:layout_toEndOf="@id/carbsValue"
+                    android:layout_toStartOf="@id/fatValue"
                     android:text="Fat"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -189,7 +213,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showFat"
                     android:layout_toStartOf="@id/fatUnit"
-                    android:text="Fat Value"
+                    android:layout_marginStart="50dp"
+                    android:text="200"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -198,7 +223,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showFat"
-                    android:layout_alignEnd="@id/bmrValue"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
                     android:text="g"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -208,8 +234,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showProtein"
-                    android:layout_marginStart="35dp"
-                    android:layout_toEndOf="@id/carbsValue"
+                    android:layout_alignStart="@id/showFat"
                     android:text="Fiber"
                     android:textColor="@color/black"
                     android:textSize="18sp"
@@ -222,7 +247,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showFiber"
                     android:layout_toStartOf="@id/fiberUnit"
-                    android:text="Fiber Value"
+                    android:layout_alignStart="@id/fatValue"
+                    android:text="200"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -231,39 +257,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBaseline="@id/showFiber"
-                    android:layout_alignEnd="@id/bmrValue"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
                     android:text="g"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/pieChartTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/caloriesProgressBar"
-                    android:layout_alignStart="@id/caloriesProgressBar"
-                    android:layout_marginTop="20dp"
-                    android:text="Nutrients"
-                    android:textColor="@color/black"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    app:drawableLeftCompat="@drawable/nutrient_24"
-                    android:drawablePadding="8dp"/>
-
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
-                    android:layout_width="350dp"
-                    android:layout_height="350dp"
-                    android:layout_below="@id/pieChartTitle"
-                    android:layout_alignStart="@id/caloriesProgressBar"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
-                    android:layout_below="@id/pieChart"
-                    android:background="@color/honeydew"/>
+                    android:layout_below="@id/nutrientBg">
+                </LinearLayout>
 
 
             </RelativeLayout>

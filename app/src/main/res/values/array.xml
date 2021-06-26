@@ -3,9 +3,9 @@
 
     <string-array name="exercise_frequency">
     <item>little or no exercise</item>
-    <item>light exercise or sports 1–3 days/week</item>
-    <item>moderate exercise 3–5 days/week)</item>
-    <item>hard exercise 6–7 days/week</item>
+    <item>light exercise or sports (1–3 days/week)</item>
+    <item>moderate exercise (3–5 days/week)</item>
+    <item>hard exercise (6–7 days/week)</item>
     <item>very hard exercise and a physical job</item>
     </string-array>
 

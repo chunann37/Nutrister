@@ -90,7 +90,8 @@
                     android:id="@+id/foodEnergy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="300dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:text="Calories"
@@ -126,10 +127,12 @@
 
         <LinearLayout
             android:id="@+id/lunchBg"
-            android:layout_width="410dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/lunchTitle"
             android:layout_alignBottom="@id/addLunch"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/light_blue_background"
             android:orientation="horizontal" />
@@ -194,7 +197,8 @@
                     android:id="@+id/foodEnergy2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="300dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:text="Calories"
@@ -299,7 +303,8 @@
                     android:id="@+id/foodEnergy3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="300dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:text="Calories"
@@ -404,7 +409,8 @@
                     android:id="@+id/foodEnergy4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="300dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:text="Calories"
@@ -441,35 +447,35 @@
 
         <LinearLayout
             android:id="@+id/tipsBg"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/addSnack"
-            android:layout_alignBottom="@id/tipsDesc"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="18dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/border"
             android:orientation="horizontal"
-            android:padding="3dp"/>
+            android:padding="3dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tips"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/addSnack"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginStart="30dp"
-                    android:paddingTop="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:paddingTop="2dp"
                     android:text="Tips"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tipsDesc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tips"
                     android:layout_marginTop="5dp"
@@ -478,13 +484,14 @@
                     android:text="•	Swipe left or right to remove food from log."
                     android:textSize="18dp"/>
 
+            </RelativeLayout>
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_below="@id/tipsBg">
-
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@id/tipsBg">
+            </LinearLayout>
 
             </RelativeLayout>
         </LinearLayout>
