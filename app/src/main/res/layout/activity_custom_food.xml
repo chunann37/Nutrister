@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customFoodTitle"
                     android:layout_alignBaseline="@id/foodNameInput"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="45dp"
                     android:layout_marginTop="46dp"
                     android:labelFor="@id/foodNameInput"
                     android:text="Food Name: "
@@ -144,7 +144,7 @@
                     android:layout_marginTop="40dp"
                     android:layout_toEndOf="@id/foodNameTitle"
                     android:layout_marginStart="10dp"
-                    android:hint="Enter food name"
+                    android:hint="Food name"
                     android:inputType="textAutoCorrect|textCapSentences" />
 
                 <Spinner
@@ -172,7 +172,7 @@
                     android:layout_below="@id/foodNameInput"
                     android:layout_marginTop="20dp"
                     android:layout_alignStart="@id/foodNameInput"
-                    android:hint="Enter energy value"
+                    android:hint="Energy value"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -192,7 +192,7 @@
                     android:layout_below="@id/energyInput"
                     android:layout_marginTop="20dp"
                     android:layout_alignStart="@id/foodNameInput"
-                    android:hint="Enter carbs value"
+                    android:hint="Carbs value"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -213,7 +213,7 @@
                     android:layout_below="@id/carbsInput"
                     android:layout_marginTop="20dp"
                     android:layout_alignStart="@id/foodNameInput"
-                    android:hint="Enter protein value"
+                    android:hint="Protein value"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -234,7 +234,7 @@
                     android:layout_below="@id/proteinInput"
                     android:layout_marginTop="20dp"
                     android:layout_alignStart="@id/foodNameInput"
-                    android:hint="Enter fat value"
+                    android:hint="Fat value"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -255,7 +255,7 @@
                     android:layout_below="@id/fatInput"
                     android:layout_marginTop="25dp"
                     android:layout_alignStart="@id/foodNameInput"
-                    android:hint="Enter fiber value"
+                    android:hint="Fiber value"
                     android:inputType="numberDecimal" />
 
                 <TextView
@@ -275,10 +275,17 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/servingSpinner"
                     android:layout_marginTop="30dp"
-                    android:layout_marginStart="240dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="40dp"
                     android:text="Add to Log"
                     android:textSize="15sp"
                     android:onClick="addCustomFood"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/addFood">
+                </LinearLayout>
 
 
             </RelativeLayout>

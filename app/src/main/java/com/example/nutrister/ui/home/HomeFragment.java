@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
         textFat = root.findViewById(R.id.fatValue);
         textFiber = root.findViewById(R.id.fiberValue);
         pieChart = root.findViewById(R.id.pieChart);
-        userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+        userID = fAuth.getCurrentUser().getUid();
 
         //Progress Bar
         CompletableFuture future = new CompletableFuture<>();

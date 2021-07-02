@@ -102,6 +102,12 @@
                     android:text="@string/vitamin_e_source"
                     android:textSize="18sp" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/sourceList">
+                </LinearLayout>
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
