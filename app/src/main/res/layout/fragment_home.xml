@@ -86,8 +86,8 @@
                     android:layout_below="@id/progressBarTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:indeterminate="false"
                     android:scaleY="4" />
 
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/caloriesBg"
-                    android:layout_alignStart="@id/caloriesBg"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:text="Nutrients"
                     android:textColor="@color/black"
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:text="Carbs"
                     android:textColor="@color/black"
                     android:textSize="18sp"
