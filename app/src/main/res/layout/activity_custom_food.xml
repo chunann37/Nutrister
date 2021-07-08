@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/customFoodTitle"
                     android:layout_alignBaseline="@id/foodNameInput"
-                    android:layout_marginStart="45dp"
+                    android:layout_marginStart="35dp"
                     android:layout_marginTop="46dp"
                     android:labelFor="@id/foodNameInput"
                     android:text="Food Name: "
